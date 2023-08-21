@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1692629783 "c:/Users/Oskar/GitHub/FYS3110 - Quantum Mechanics/01_Problem_set/ProblemSet1.tex" "out/ProblemSet1.pdf" "ProblemSet1" 1692629784 2
-  "E_1.6.pdf" 0 -1 0 ""
-  "ProblemSet1.tex" 1692629782 7320 eaee962c3c970716202a5d13322ca647 ""
-  "c:/Users/Oskar/GitHub/FYS3110 - Quantum Mechanics/01_Problem_set/ProblemSet1.tex" 1692629782 7320 eaee962c3c970716202a5d13322ca647 ""
+["pdflatex"] 1692630719 "c:/Users/Oskar/GitHub/FYS3110-Quantum Mechanics/01_Problem_set/ProblemSet1.tex" "out/ProblemSet1.pdf" "ProblemSet1" 1692630720 0
+  "E_1.6.pdf" 1692630708 11263 bee0ff0953b961ad04330feef5dd8a70 ""
+  "ProblemSet1.tex" 1692630498 7336 8d14cf206f825fb58a31f8e277e057af ""
+  "c:/Users/Oskar/GitHub/FYS3110-Quantum Mechanics/01_Problem_set/ProblemSet1.tex" 1692630498 7336 8d14cf206f825fb58a31f8e277e057af ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1692456878 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1692455226 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1692455226 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -27,7 +27,6 @@
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1692455937 1124 6c73e740cf17375f03eec0ee63599741 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1692455937 1116 933a60c408fc0a863a92debe84b2d294 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1692455937 1120 8b7d695260f3cff42e636090a8002094 ""
-  "c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm" 1692455937 768 1321e9409b4137d6fb428ac9dc956269 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/esint/esint10.tfm" 1692456653 364 55557743e6c24ee44e49bc5e8dbbe3cd ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1692455226 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1692455226 32080 340ef9bf63678554ee606688e7b5339d ""
@@ -40,7 +39,6 @@
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1692455226 32762 7fee39e011c23b3589931effd97b9702 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1692455226 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1692455226 32716 08e384dc442464e7285e891af9f45947 ""
-  "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1692455226 31099 342ef5a582aacbd3346f3cf4579679fa ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1692455226 31764 459c573c03a4949a528c2cc7f557e217 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb" 1692456654 34421 79309417cbb00a4641f92d2efa583bbd ""
   "c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1692458155 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -276,9 +274,8 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1692460986 4702518 9e2031bde068df569c200d4a9a9de868 ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1692461181 8172753 af53a2a10178ed1ca05112435d811ef7 ""
   "c:/texlive/2023/texmf.cnf" 1692460950 713 e69b156964470283e0530f5060668171 ""
-  "out/E_1.6.pdf" 0 -1 0 ""
-  "out/ProblemSet1.aux" 1692629784 1150 1cd143569449da0dc866ee6e3faeceb9 "pdflatex"
-  "out/ProblemSet1.out" 1692629784 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "out/ProblemSet1.aux" 1692630720 1150 1cd143569449da0dc866ee6e3faeceb9 "pdflatex"
+  "out/ProblemSet1.out" 1692630720 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "out/ProblemSet1.aux"
   "out/ProblemSet1.log"
