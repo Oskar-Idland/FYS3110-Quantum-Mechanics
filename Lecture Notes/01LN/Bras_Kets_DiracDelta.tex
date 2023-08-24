@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{enumerate}
+\newtheorem{theorem}{Theorem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\setlength{\parindent}{0cm}
+\usepackage{graphics}
+\usepackage{graphicx} % Required for including images
+\usepackage{subcaption}
+\usepackage{bigintcalc}
+\usepackage{pythonhighlight} %for pythonkode \begin{python}   \end{python}
+\usepackage{appendix}
+\usepackage{arydshln}
+\usepackage{physics}
+\usepackage{tikz-cd}
+\usepackage{booktabs} 
+\usepackage{adjustbox}
+\usepackage{mdframed}
+\usepackage{relsize}
+\usepackage{physics}
+\usepackage[thinc]{esdiff}
+\usepackage{fixltx2e}
+\usepackage{esint}  %for lukket-linje-integral
+\usepackage{xfrac} %for sfrac
+\usepackage{hyperref} %for linker, må ha med hypersetup
+\usepackage[noabbrev, nameinlink]{cleveref} % to be loaded after hyperref
+\usepackage{amssymb} %\mathbb{R} for reelle tall, \mathcal{B} for "matte"-font
+\usepackage{listings} %for kode/lstlisting
+\usepackage{verbatim}
+\usepackage{graphicx,wrapfig,lipsum,caption} %for wrapping av bilder
+\usepackage{mathtools} %for \abs{x}
+\usepackage[norsk]{babel}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\author{Oskar Idland}
+\title{Bras, Kets and Dirac-Delta}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+
+\section{Inner Product}
+There are many ways to write the inner product
+\begin{itemize}
+    \item I. 
+    \[
+    \left(\ket{u}, \ket{v}\right) = \left(\ket{v}, \ket{u}\right)^{*} 
+    \]
+    
+    \item II. Second linearity makes first linearity impossible. 
+    \[
+    \left(\ket{u}, α\ket{v_1} + β \ket{v_2}\right) = α\left(\ket{u}, \ket{v_1}\right) + β\left(\ket{u}, \ket{v_1}\right)
+    \] 
+    \item III. 
+    \[
+    \left(α \ket{v_1} + β\ket{v_2}, \ket{u}\right) = α^{*} \ket{\ket{v_1}, \ket{u}} + β^{*} \left( \ket{v_2}, \ket{u}\right)
+    \] 
+    \item IV. 
+    \[
+    \underbrace{(\ket{v},\ket{v})}_{ℝ} \ge 0 
+    \]
+\end{itemize}
+
+\subsection{Dirac Notation}
+We denote the inner product like this in Dirac-notation. 
+\[
+(\ket{u}, \ket{v}) = \bra{u}\ket{v} ∈ ℂ
+\]
+\begin{itemize}
+    \item  I 
+    \[
+    \bra{u}\ket{v} = ( \bra{v}\ket{u})^{*} 
+    \] 
+    \item II 
+    \[
+    \ket{v'} = α \ket{v_1} + β \ket{v_2} 
+    \]
+    
+    \item III 
+    \[
+    \bra{v}\ket{v} \ge 0
+    \]
+\end{itemize}
+
+\subsection{Representation of Bras}
+The bra can be written as an operator operating on a ket, producing a number
+\[
+\bra{A} ≃ ∫ \ \mathrm{d}x A^{*}(x)
+\]
+\[
+\bra{A}\ket{B} = ∫ \ \mathrm{d}x A^{*}(x)B(x)
+\]
+\[
+\bra{B}\ket{A} = ∫ \ \mathrm{d}x B^{*}(x) A(x)
+\]
+
+\section{Sets of Kets}
+this is a ket $|u⟩$ 
+
+\section{Discrete and Continuous Basis} 
+\subsection{Discrete}
+\[
+\ket{f} = ∑_{i=1}^{∞} f_i \ket{i}
+\]
+For orthonormal basis 
+\[
+\bra{i}\ket{j} = δ_{ij} → f_j = \bra{j}\ket{f}
+\]
+
+\subsection{Continuous}
+\[
+\ket{f} = ∫_{0}^{L}  f(x')\ket{x'} \ \mathrm{d}x
+\]
+\[
+\bra{x}\ket{f} = f(x)
+\]
+
+\[
+\bra{x}\ket{f} = ∫_{0}^{L} \bra{x} f(x) \ket{x'} \ \mathrm{d}x = ∫_{0}^{L} f(x) \underbrace{\bra{x}\ket{x'}}_{δ} \ \mathrm{d}x = f(x)
+\]
+
+In a short interval $[-ϵ, ϵ]$ the function $f$ becomes approximately constant. Using the definition of the Dirac-delta we get the following
+\[
+\lim_{ϵ \to 0} ∫_{-ϵ}^{ϵ} f(x) δ(x-x') \ \mathrm{d}x = f(x) \ \underbrace{ \lim_{ϵ \to 0} ∫_{-ϵ}^{ϵ} δ(x-x') \ \mathrm{d}x}_{1}=  f(x)
+\]
+
+
+
+\end{document}
