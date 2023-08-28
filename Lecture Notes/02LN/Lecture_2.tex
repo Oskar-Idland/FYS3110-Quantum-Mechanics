@@ -1,0 +1,245 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{enumerate}
+\newtheorem{theorem}{Theorem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\setlength{\parindent}{0cm}
+\usepackage{graphics}
+\usepackage{graphicx} % Required for including images
+\usepackage{subcaption}
+\usepackage{bigintcalc}
+\usepackage{pythonhighlight} %for pythonkode \begin{python}   \end{python}
+\usepackage{appendix}
+\usepackage{arydshln}
+\usepackage{physics}
+\usepackage{booktabs} 
+\usepackage{adjustbox}
+\usepackage{mdframed}
+\usepackage{relsize}
+\usepackage{physics}
+\usepackage[thinc]{esdiff}
+\usepackage{fixltx2e}
+\usepackage{esint}  %for lukket-linje-integral
+\usepackage{xfrac} %for sfrac
+\usepackage{hyperref} %for linker, må ha med hypersetup
+\usepackage[noabbrev, nameinlink]{cleveref} % to be loaded after hyperref
+\usepackage{amssymb} %\mathbb{R} for reelle tall, \mathcal{B} for "matte"-font
+\usepackage{listings} %for kode/lstlisting
+\usepackage{verbatim}
+\usepackage{graphicx,wrapfig,lipsum,caption} %for wrapping av bilder
+\usepackage{mathtools} %for \abs{x}
+\usepackage[norsk]{babel}
+\usepackage{cancel}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\author{Oskar Idland}
+\title{Lecture 2}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+
+\section*{Wave Function}
+  \[
+  \ket{ψ} = ∫ \ \mathrm{d}x ψ(x)\ket{x}
+  \]
+
+  The wave function must not be mistaken for the state vector. The wave function $ψ(x)$ calculates the coefficients for all possible positions $x$ in the $x$ basis. The definition of the wave function is $\ket{ψ} = \bra{x}\ket{ψ}$
+
+\section*{Operators}
+
+  \paragraph{Definition:}
+  Takes a ket and returns a ket. It must be linear and Hermitian. As a consequence of being Hermitian the eigenvalues are real.
+  \[
+  \hat{L} \ket{u} = \ket{v}
+  \]
+  \[
+  \hat{L}\left(\ket{u} + \ket{v}\right) = \hat{L}\ket{u} + \hat{L}\ket{v}
+  \]
+  \[
+  \hat{L} = \hat{L}^{†}
+  \]
+
+  \subsection*{Continuous Operators}
+
+    \[
+    \ket{ψ} = ∫ \bra{x}\ket{ψ}\ket{x} \ \mathrm{d}x = \ket{x} \bra{x}\ket{ψ} \ \mathrm{d}x = \underbrace{∫ (\ket{x} \bra{x} \ \mathrm{d}x)}_{\text{Identity operator } \hat{I}} \ket{ψ}
+    \]
+
+  \subsection*{Discrete Operators}
+    \[
+    \ket{ψ} = ∑_{i}^{} ψ_i \ket{i} = ∑_{i}^{} \bra{i}\ket{ψ} \ket{i} = \underbrace{∑_{i}^{} \ket{i} \bra{i}}_{\hat{I}}\ket{ψ}
+    \]
+    \[
+    \bra{j}\ket{ψ} = ∑_{i}^{} ψ_i \underbrace{\bra{j}\ket{i}}_{δ_{ji}} = ψ_j
+    \]
+
+  \subsection*{Representation of Operators}
+    The ket $\ket{u}$ and operator $\hat{L}$ can be represented in the following way:
+    \[
+    \ket{u} ≃ \begin{bmatrix*}[r]
+    u_1 \\
+    u_2 \\
+    \end{bmatrix*}
+    \]
+    \[
+    \hat{L} ≃ \begin{bmatrix*}[r]
+    L_{11} & L_{12} \\
+    L_{21} & L_{22} \\
+    \end{bmatrix*}
+    \]
+
+    \[
+    \ket{u} ≃ u(x)
+    \]
+    \[
+    \hat{L} ≃ c_0(x) + c_1(x) \frac{\mathrm{d}}{\mathrm{d}x} + c_2(x) \frac{\mathrm{d}^2}{\mathrm{d}x^2} + \dots
+    \]
+
+  \subsection*{Discrete basis}
+    \[
+    \bra{m}\hat{K}\ket{n} = K_{nm} = \text{m,n'th matrix element of } \hat{K}
+    \]
+    \[
+    \ket{v} = ∑_{m}^{} V_m \ket{m}
+    \]
+    \[
+    \hat{K}\ket{v} = \bra{n}\hat{K}\ket{v} = \bra{n}\hat{K} ∑_{m}^{} V_m \ket{m} = ∑_{m}^{} V_m \bra{n}\hat{K}\ket{m} = ∑_{m}^{} V_m K_{nm}
+    \]
+  \subsection*{Composite Operators}
+    \[
+    \hat{K}\hat{L}\ket{v} = \hat{K} (\hat{L}\ket{v})  = (\hat{K} \hat{L}) \ket{v}
+    \]
+    \[
+    \bra{n}\hat{K}\hat{L}\ket{m}
+    \]
+    Inserting the identity operator:
+    \[
+    \bra{n}\hat{K} \underbrace{∑_{r}^{} \ket{r}\bra{r}}_{\hat{I}}\hat{L}\ket{m} 
+    \]
+    \[
+    ∑_{r}^{} \bra{n}\hat{K}\ket{r}\bra{r}\hat{L}\ket{m} = \underbrace{∑_{r}^{} K_{nr} L_{rm}}_{\text{Matrix multiplication}}
+    \]
+
+\section*{Change of Basis}
+  Give to different bases $\left\{\ket{n}\right\}$ and $\left\{\ket{n'}\right\}$. 
+  \[
+  \ket{ψ} = ∑_{n}^{} \underbrace{ψ_n \ket{n}}_{\bra{n}\ket{ψ}} \quad , \quad \ket{ψ} = ∑_{n'}^{} \underbrace{ψ_{n'} \ket{n'}}_{\bra{n'}\ket{ψ}}
+  \]
+  \[
+  \bra{m'}\ket{ψ} = ∑_{n}^{} ψ_n \underbrace{\bra{m'}\ket{n}}_{S_{m'n}}
+  \]
+  We define $S_{m'n}$ to be $\bra{m'}\ket{n}$ which is a matrix relation between $ψ_n$ to $ψ_{n'}$.
+  \[
+  ψ_{m'}=  ∑_{n}^{} S_{m'n} ψ_n
+  \]
+  S is unitary meaning $S^{†} = S^{-1}$
+
+  \paragraph{Proof of unitarity:}
+  Set $\ket{ψ} = \ket{n'}$
+  \[
+  \underbrace{\bra{m'}\ket{n'}}_{δ_{m'n'}} = ∑_{n}^{} S_{m'n'} \underbrace{\bra{n}\ket{n'}}_{\bra{n'}\ket{n}^{*} = S_{n'm}^{*}}
+  \]
+  Remember $S_{m'n }= \bra{m'}\ket{n}$. 
+  \[
+  \bra{n}\ket{n'} = \bra{n'}\ket{n}^{*} = S_{n'm}^{*} = S_{m'n}^{T*} = S_{m'n}^{†}
+  \]
+  \[
+  SS^{†} = 1 → S^{†} = S^{-1}
+  \]
+
+  \subsection*{Operators in different bases}
+    \[
+    K_{m'n'} = \bra{m'}\hat{K}\ket{n'} = \bra{m'}\hat{I}\hat{K}\hat{I}\ket{n'}
+    \]
+    \[
+    ∑_{mn}^{} \underbrace{\bra{n'}\ket{m}}_{S_{m'm}} \bra{m}\hat{K}\ket{n} \underbrace{\bra{n}\ket{n'}}_{S_{nn'}^{†}} 
+    \]
+    \[
+    ∑_{mn}^{} S_{m'm} K_{mn} S_{nn'}^{†} = S^{†}KS = K'
+    \]
+    Now we have the operator $\hat{K}$ in a new basis defined as $\hat{K}'$
+
+\section*{Hermitian Conjugate of an Operator}
+  \paragraph{Definition by the inner product:}
+  \[
+  \left(\ket{u}, \hat{K} \ket{v}\right) = \left(\hat{K}^{†} \ket{u}, \ket{v}\right) \text{ for all } \ket{u}, \ket{v}
+  \]
+  Is not as simple as "just transposing and taking the complex conjugate". A function could be Hermitian. 
+  \paragraph{Definition in Dirac-Notaion: }
+  \[
+  \bra{u}\hat{K}\ket{v}  = \bra{v}\hat{K}^{†}\ket{u}^{*} \text{for all } \ket{u}, \ket{v}
+  \]
+  It is enough to define:
+  \[
+  \bra{u}\hat{K}\ket{v}  = \bra{v}\hat{K}^{†}\ket{u} \text{ problem 2.3(L)}
+  \]
+
+  \paragraph{Exercise: Find $\hat{K}^{†}$}
+  \[
+  \hat{K} = α\ket{a}\bra{b}
+  \]
+  \[
+  \bra{u}\hat{K}^{†}\ket{v} = \bra{v}\hat{K}\ket{u}^{*} = \bra{v}\ket{a}^{*} \bra{b}\ket{u}^{*}
+  \]
+  \[
+  \bra{u}\left(\ket{b} \bra{a}\right)\ket{v} → \hat{K}^{†} = \ket{b}\bra{a} α^{*}
+  \]
+  \paragraph{Check the following correspondence}
+  \[
+  \hat{K} \ket{v} ↔ \bra{v}\hat{K}^{†}
+  \]
+  We set $\ket{w} = \hat{K}\ket{v}$ and act on it with an arbitrary bra $\bra{n}$. 
+  \[
+  \bra{u}\ket{w} = \bra{u}\hat{K}\ket{v} = \bra{v}\hat{K}^{†}\ket{u}^{*} → \bra{w}\ket{u} = \bra{v}\hat{K}^{†}\ket{u} 
+  \]
+  This holds for any $\ket{w} → \bra{w} = \bra{v}\hat{K}^{†}$
+  
+  \paragraph{Exercise: Find the Hermitian conjugate of the following operator}
+  \[
+  \hat{K} ≃ \frac{\mathrm{d}}{\mathrm{d}x}
+  \]
+  \[
+  \ket{u} = u(x)
+  \]
+  \[
+  \ket{v} = v(x)
+  \]
+
+  \[
+  \bra{u}\hat{K}^{†}\ket{v} = \bra{v}\hat{K}\ket{u}^{*} = ∫ \left(v^{*}(x) \frac{\mathrm{d}}{\mathrm{d}x} u(x)\right)^{*} \ \mathrm{d}x = ∫ v(x) \frac{\mathrm{d}}{\mathrm{d}x}u^{*}(x) \ \mathrm{d}x
+  \]
+  \[
+  \left.\underbrace{v(x)u^{*}(x)}_{0} \right\rvert_{-∞}^{∞} - ∫_{-∞}^{∞} \frac{\mathrm{d}}{\mathrm{d}x}v(x)u^{*}(x) \ \mathrm{d}x = ∫_{-∞}^{∞} u^{*}(x)\left(- \frac{\mathrm{d}}{\mathrm{d}x}\right)v(x) \ \mathrm{d}x
+  \]
+  
+
+
+
+\end{document}

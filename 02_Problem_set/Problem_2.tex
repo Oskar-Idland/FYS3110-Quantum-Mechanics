@@ -16,7 +16,6 @@
 \usepackage{appendix}
 \usepackage{arydshln}
 \usepackage{physics}
-\usepackage{tikz-cd}
 \usepackage{booktabs} 
 \usepackage{adjustbox}
 \usepackage{mdframed}
@@ -34,6 +33,7 @@
 \usepackage{graphicx,wrapfig,lipsum,caption} %for wrapping av bilder
 \usepackage{mathtools} %for \abs{x}
 \usepackage[norsk]{babel}
+\usepackage{cancel}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -59,96 +59,67 @@
 
 \lstset{style=mystyle}
 \author{Oskar Idland}
-\title{Bras, Kets and Dirac-Delta}
+\title{Problem  Set 2}
 \date{}
 \begin{document}
 \maketitle
 \newpage
 
-\section{Inner Product}
-There are many ways to write the inner product
-\begin{itemize}
-    \item I. 
-    \[
-    \left(\ket{u}, \ket{v}\right) = \left(\ket{v}, \ket{u}\right)^{*} 
-    \]
-    
-    \item II. Second linearity makes first linearity impossible. 
-    \[
-    \left(\ket{u}, α\ket{v_1} + β \ket{v_2}\right) = α\left(\ket{u}, \ket{v_1}\right) + β\left(\ket{u}, \ket{v_1}\right)
-    \] 
-    \item III. 
-    \[
-    \left(α \ket{v_1} + β\ket{v_2}, \ket{u}\right) = α^{*} \ket{\ket{v_1}, \ket{u}} + β^{*} \left( \ket{v_2}, \ket{u}\right)
-    \] 
-    \item IV. 
-    \[
-    \underbrace{(\ket{v},\ket{v})}_{ℝ} \ge 0 
-    \]
-\end{itemize}
-
-\subsection{Dirac Notation}
-We denote the inner product like this in Dirac-notation. 
+\section*{Problem 2.1 (L)}
 \[
-(\ket{u}, \ket{v}) = \bra{u}\ket{v} ∈ ℂ
-\]
-\begin{itemize}
-    \item  I 
-    \[
-    \bra{u}\ket{v} = ( \bra{v}\ket{u})^{*} 
-    \] 
-    \item II 
-    \[
-    \ket{v'} = α \ket{v_1} + β \ket{v_2} 
-    \]
-    
-    \item III 
-    \[
-    \bra{v}\ket{v} \ge 0
-    \]
-\end{itemize}
-
-\subsection{Representation of Bras}
-The bra can be written as an operator operating on a ket, producing a number
-\[
-\bra{A} ≃ ∫ \ \mathrm{d}x A^{*}(x)
-\]
-\[
-\bra{A}\ket{B} = ∫ \ \mathrm{d}x A^{*}(x)B(x)
-\]
-\[
-\bra{B}\ket{A} = ∫ \ \mathrm{d}x B^{*}(x) A(x)
+\ket{ψ} = ∑_{i=1}^{2} ψ_i \ket{a_i} = ∑_{i=1}^{2} ψ_i' \ket{a_i'}
 \]
 
-\section{Sets of Kets}
-this is a ket $|u⟩$ 
-
-\section{Discrete and Continuous Basis} 
-\subsection{Discrete}
-\[
-\ket{f} = ∑_{i=1}^{∞} f_i \ket{i}
-\]
-For orthonormal basis 
-\[
-\bra{i}\ket{j} = δ_{ij} → f_j = \bra{j}\ket{f}
-\]
-
-\subsection{Continuous}
-\[
-\ket{f} = ∫_{0}^{L}  f(x')\ket{x'} \ \mathrm{d}x
-\]
-\[
-\bra{x}\ket{f} = f(x)
-\]
+As the two bases are orthonormal, we can express $ψ_i$ in the following manner:
 
 \[
-\bra{x}\ket{f} = ∫_{0}^{L} \bra{x} f(x) \ket{x'} \ \mathrm{d}x = ∫_{0}^{L} f(x) \underbrace{\bra{x}\ket{x'}}_{δ} \ \mathrm{d}x = f(x)
+∑_{i=1}^2 ψ_i = ∑_{i=1}^2 \bra{a_i} ψ_i' \ket{a_i'}  
 \]
 
-In a short interval $[-ϵ, ϵ]$ the function $f$ becomes approximately constant. Using the definition of the Dirac-delta we get the following
+We can then express $ψ_i'$ in terms of $ψ_i$:
+
 \[
-\lim_{ϵ \to 0} ∫_{-ϵ}^{ϵ} f(x) δ(x-x') \ \mathrm{d}x = f(x) \ \underbrace{ \lim_{ϵ \to 0} ∫_{-ϵ}^{ϵ} δ(x-x') \ \mathrm{d}x}_{1}=  f(x)
+∑_{i=1}^{2} ψ_i' = ∑_{i=1}^{2} \bra{a_i'} ψ_i \ket{a_i}
 \]
+
+
+\section*{Problem 2.2 (L)}
+We begin by creating a matrix to convert from the basis  $B =  \left\{\begin{pmatrix*}[r]
+ 1 \\
+ 0 \\
+\end{pmatrix*}, \begin{pmatrix*}[r]
+ 0 \\
+ 1 \\
+\end{pmatrix*}\right\}$ into the new basis of $B' = \left\{\frac{1}{\sqrt{2}} \begin{pmatrix*}[r]
+ 1 \\
+ 1 \\
+\end{pmatrix*}, \frac{1}{\sqrt{2}} \begin{pmatrix*}[r]
+ -1 \\
+ 1 \\
+\end{pmatrix*}\right\}$. By getting the combined matrix of the basis vectors into row reduced echelon form.  
+\[
+\begin{bmatrix*}[r]
+ 1 & 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+ 0 & 1 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+\end{bmatrix*}
+\]
+The last two columns creates the transformation matrix $T$. 
+\[
+\hat{O}' = T \hat{O}
+\]
+
+
+\section*{Problem 2.3 (L)}
+We can see that $\hat{O}^{†} = \hat{O}$
+
+
+\section*{Problem 2.4 (L)}
+When an operator acts on its eigenstate, it returns the eigenvalue times the eigenstate.
+\[
+∴ \bra{λ}\hat{K}\ket{u} = λ\bra{λ}\ket{u}
+\]
+
+\section*{Problem 2.5 (L)}
 
 
 \end{document}
