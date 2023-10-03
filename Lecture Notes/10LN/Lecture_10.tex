@@ -1,0 +1,320 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{enumerate}
+\newtheorem{theorem}{Theorem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\setlength{\parindent}{0cm}
+\usepackage{graphics}
+\usepackage{graphicx} % Required for including images
+\usepackage{subcaption}
+\usepackage{bigintcalc}
+\usepackage{pythonhighlight} %for pythonkode \begin{python}   \end{python}
+\usepackage{appendix}
+\usepackage{arydshln}
+\usepackage{physics}
+\usepackage{booktabs} 
+\usepackage{adjustbox}
+\usepackage{mdframed}
+\usepackage{relsize}
+\usepackage{physics}
+\usepackage[thinc]{esdiff}
+\usepackage{fixltx2e}
+\usepackage{esint}  %for lukket-linje-integral
+\usepackage{xfrac} %for sfrac
+\usepackage[colorlinks=true]{hyperref} %for linker, må ha med hypersetup
+\usepackage[noabbrev, nameinlink]{cleveref} % to be loaded after hyperref
+\usepackage{amssymb} %\mathbb{R} for reelle tall, \mathcal{B} for "matte"-font
+\usepackage{listings} %for kode/lstlisting
+\usepackage{verbatim}
+\usepackage{graphicx,wrapfig,lipsum,caption} %for wrapping av bilder
+\usepackage{mathtools} %for \abs{x}
+\usepackage[norsk]{babel}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\author{Oskar Idland}
+\title{Lecture 10}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+\section*{Spin 1/2}
+\[
+\hat{S} = (S_x, S_y, S_z)
+\] 
+An internal degree of freedom, which means it has nothing to do with orientation in space. 
+\[
+[S_y, S_x] = iℏS_z
+\]
+\[
+[S_z, S_y] = iℏS_x
+\]
+\[
+[S_x, S_z] = iℏS_y
+\]
+\[
+S^2 = S_x^2 + S_y^2 + S_z^2
+\]
+\[
+S^2 \ket{s,m} = ℏ^2 s(s+1) \ket{s,m}
+\]
+where $s$ is the quantum number, where $s ∈ \left\{0, 1 / 2, 1, \ldots  \right\}$ and $m ∈ \left\{-s, -s +1, \ldots  , s\right\}$
+\[
+S_{\pm} = S_x \pm iS_y
+\]
+\[
+S_{\pm} \ket{s,m} = ℏ \sqrt{s(s+1) - m(m \pm 1)} \ket{s, m \pm 1}
+\]
+When the spin is 1/2, we have two states, $\ket{1/2, +1/2}$ and $\ket{1/2, -1/2}$. This can also be written as $\ket{↑_z}$ and $\ket{↓_z}$ or $\ket{1}$ and $\ket{0}$.
+\subsection*{Applying the spin operators}
+\[
+S_z \ket{↑_z} = \frac{ℏ}{2} \ket{↑_z}
+\]
+\[
+S_z \ket{↓_z} = -\frac{ℏ}{2} \ket{↓_z}
+\]
+The state are naturally orthonormal, meaning $\bra{↑}\ket{↓} = 0$ and $\bra{↑}\ket{↑} = 1$ and $\bra{↓}\ket{↓} = 1$.  
+\subsection*{Rewriting the operator in bracket notation in the z-basis}
+\[
+S_z = \frac{ℏ}{2} \Big(\ket{↑}\bra{↑} - \ket{↓}\bra{↓}\Big)
+\]
+\subsubsection*{Lowering and raising operators}
+\[
+S_+ = ℏ \ket{↑}\bra{↓}
+\]
+\[
+S_- = ℏ \ket{↓}\bra{↑}
+\]
+\[
+S_{+}\ket{↓} = ℏ\ket{↑} \quad , \quad S_{-}\ket{↓} = 0
+\]
+
+\subsection*{2D representation of the operators}
+\[
+\ket{↑} ≃ \begin{pmatrix}
+1\\
+0
+\end{pmatrix} \quad , \quad \ket{↓} ≃ 
+\begin{pmatrix}
+0\\
+1
+\end{pmatrix}
+\]
+\subsubsection*{State vectors}
+\[
+\ket{↑}\bra{↑} ≃ 
+\begin{pmatrix*}[r]
+ 1 & 0 \\
+ 0 & 0 \\
+\end{pmatrix*} \quad , \quad \ket{↓}\bra{↓} ≃
+\begin{pmatrix*}[r]
+ 0 & 0 \\
+ 0 & 1 \\
+\end{pmatrix*}
+\]
+\subsubsection*{Spin operators}
+\[
+S_z = ℏ / 2 \left(\begin{pmatrix*}[r]
+ 1 & 0 \\
+ 0 & 0 \\
+\end{pmatrix*} -
+\begin{pmatrix*}[r]
+ 0 & 0 \\
+ 0 & 1 \\
+\end{pmatrix*}\right) = ℏ / 2 \begin{pmatrix*}[r]
+ 1 & 0 \\
+ 0 & -1 \\
+\end{pmatrix*}
+\]
+\[
+S_x = 
+ℏ / 2 \begin{pmatrix*}[r]
+ 0 & 1 \\
+ 1 & 0 \\
+\end{pmatrix*}
+\]
+\[
+S_y = ℏ / 2
+\begin{pmatrix*}[r]
+ 0 & -i \\
+ i & 0 \\
+\end{pmatrix*}
+\]
+The matrixes are often written as $σ_z, σ_x, σ_y$. 
+\[
+S^2 = S_x^2 + S_y^2 + S_z^2 = \frac{3ℏ^2}{4} \begin{pmatrix*}[r]
+ 1 & 0 \\
+ 0 & 1 \\
+\end{pmatrix*}
+\]
+
+\section*{Rotating charge in a magnetic field}
+\subsection*{Classical}
+\[
+I = \frac{1}{T} = \frac{q}{2πr} = \frac{qv}{2πr}
+\]
+A circular current is like a small magnet, where $I$ is the current, $T$ is the period, $q$ is the charge, $r$ is the radius and $v$ is the velocity. The magnetic moment is defined as $\vec{µ} = I\vec{A} = \frac{qvr}{2}$, where $\vec{A}$ is the area vector.
+\subsubsection*{Angular momentum}
+\[
+\left|\vec{L}\right| = mvr \quad , \quad \left|\vec{μ}\right| = \frac{2}{2m}\hat{L}
+\]
+where $m$ is the mass of the particle.
+\[
+H = -\vec{µ} ⋅ \vec{B} 
+\]
+
+\subsubsection*{Electron spin in a magnetic field}
+\[
+\vec{μ} = γ \vec{S} 
+\]
+where $γ$ is the gyromagnetic ratio $ = 2.0023 \left( - e /2m\right)$
+\[
+H = - γ \vec{S} ⋅ \vec{B}
+\]
+
+\subsubsection*{Spin motion in a magnetic field}
+\paragraph{Generic State: }
+\[
+\ket{ψ} = a\ket{↑} + b\ket{↓}
+\]
+Parameterize the coefficients
+\[
+a = \cos \frac{α}{2} e^{iϕ} \quad , \quad b = \sin \frac{α}{2} e^{iφ}
+\]
+put the <-axis along $\vec{B}$. 
+\[
+H = - γ \vec{S} ⋅ \vec{B} = - γ B S_z
+\]
+The eigenstates of the Hamiltonian $H$ is $\ket{↑}$ and $\ket{↓}$, with eigenvalues $-γB ℏ / 2$ and $γB ℏ / 2$ respectively. We can then rewrite the generic state as follows:
+\[
+\ket{ψ(t)} = e^{-iHt / ℏ} \ket{ψ} = e^{-iHt / ℏ} \left(a\ket{↑} + b \ket{↓}\right)
+\]
+\[
+\ket{ψ(t)} = e^{iγBt / 2} a\ket{↑} + e^{-iγBt / 2} b\ket{↓}
+\]
+
+\paragraph{Applying the $S_i$ operator}
+\[
+\bra{ψ(t)}S_z\ket{ψ(t)} = \left( a^{*} e^{-iγBt / 2} \bra{↑} + b^{*} e^{iγBt / 2} \bra{↓}\right) \left(\ket{↑}\bra{↑} - \ket{↓}\bra{↓}\right) \left(e^{iγBt / 2} a \ket{↑} + e^{-iγBt / 2}b \ket{↓}\right)
+\]
+\[
+\left<S_z\right>= ℏ/2 \left(a^{*}a - b^{*} b\right) = \frac{ℏ}{2} \cos α
+\]
+The result is time independent. 
+\paragraph{Expectation value of $S_x$}
+\[
+\left<S_x\right> = \left( a^{*} e^{-iγBt / 2} \bra{↑} + b^{*} e^{iγBt / 2} \bra{↓}\right) ℏ / 2\left(\ket{↓}\bra{↑} + \ket{↑}\bra{↓}\right) \left(e^{iγBt / 2} a \ket{↑} + e^{-iγBt / 2}b \ket{↓}\right)
+\]
+\[
+\left<S_x\right> = \frac{ℏ}{2} \left(a^{*}b e^{-iγBt} + a b^{*} e^{iγBt}\right)
+\]
+\[
+\left<S_x\right> = \frac{ℏ}{2} \left( be^{-iγBt / 2} \ket{↑} + ae ^{iγBt / 2}\ket{↓}\right)
+\]
+\[
+\left<S_x\right> = \frac{ℏ}{2} \cos (α / 2) \sin (α / 2) e^{-iϕ} e^{iθ} e^{-iγBt} + \underbrace{c.c}_{\text{complex conjugate}}
+\]
+\[
+\left<S_x\right> = \frac{ℏ}{2} \sin α \cos (θ - ϕ - γBt)
+\]
+
+The result is time dependent and oscillates just like you would expect classically. 
+\[
+\left<S_y\right> = - \frac{ℏ}{2}\sin α\cos (γBt + ϕ - θ) 
+\]
+The expectation value of the spin precess around the field direction, with a frequency of $w_{L} = γB$
+
+\section*{Composite systems}
+Now we combine the degrees of freedom coming. 
+\subsection*{A particle with real space state $\ket{nlm}$ and spin $\ket{↑}$}
+\[
+\ket{nlm↑} = \ket{nlm} ⊗ \ket{↑} 
+\]
+\[
+\ket{nlm} = ψ_{nlm}(γ,θ,ϕ)
+\]
+\[
+\ket{s} = a \ket{↑} + b \ket{↓} = 
+\begin{pmatrix*}[r]
+ a \\
+ b \\
+\end{pmatrix*}
+\]
+The tensor product becomes a combination of all possible states:
+\[
+\ket{nlm,s} = \ket{nlm} ⊗ \ket{s} =
+\begin{pmatrix*}[r]
+ a ψ_{nlm}\ket{nlm} \\
+ b ψ_{nlm}\ket{nlm} \\
+\end{pmatrix*}
+\]
+\subsection*{Two spin 1/2 particles}
+\[
+\ket{a} = 
+\begin{pmatrix*}[r]
+ a_1 \\
+ a_2 \\
+\end{pmatrix*}
+\quad , \quad
+\ket{b} =
+\begin{pmatrix*}[r]
+ b_1 \\
+ b_2 \\
+\end{pmatrix*}
+\]
+\[
+\ket{a} ⊗ \ket{b} =
+\begin{pmatrix*}[r]
+ a_1 b_1 \\
+ a_1 b_2 \\
+ a_2 b_1 \\
+ a_2 b_2 \\
+\end{pmatrix*}
+\]
+With dimensions $4 ×1 $. 
+\subsection*{Properties of Tensor Products}
+\[
+\ket{ϕ} = ∑_{}^{} c_n \ket{n} \quad , \quad \ket{x} = ∑_{x| }^{} d_m \ket{m}
+\]
+\begin{itemize}
+    
+    \item The dimensions of the tensor product is the product of the dimensions of the two vectors. $a×b ⊗ c×d = ac×bd$
+    \item 
+    \[
+    \ket{ϕ} ⊗ \ket{x} = ∑_{}^{} c_n d_m \ket{n} ⊗ \ket{m} = α \ket{ϕ} ⊗ \ket{x_1} + β \ket{ϕ} ⊗ \ket{x_2}
+    \]
+    \item
+    \[
+    \left(\bra{n'} \otimes \bra{m'}\right) \left(\ket{n} \otimes \ket{m}\right) = \bra{n'}\ket{n} ⋅ \bra{m'}\ket{m}
+    \]
+
+\end{itemize}
+\subsection*{Measurement with more degrees of freedom}
+
+
+\end{document}

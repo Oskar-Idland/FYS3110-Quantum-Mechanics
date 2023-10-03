@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{enumerate}
+\newtheorem{theorem}{Theorem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\setlength{\parindent}{0cm}
+\usepackage{graphics}
+\usepackage{graphicx} % Required for including images
+\usepackage{subcaption}
+\usepackage{bigintcalc}
+\usepackage{pythonhighlight} %for pythonkode \begin{python}   \end{python}
+\usepackage{appendix}
+\usepackage{arydshln}
+\usepackage{physics}
+\usepackage{booktabs} 
+\usepackage{adjustbox}
+\usepackage{mdframed}
+\usepackage{relsize}
+\usepackage{physics}
+\usepackage[thinc]{esdiff}
+\usepackage{esint}  %for lukket-linje-integral
+\usepackage{xfrac} %for sfrac
+\usepackage{hyperref} %for linker, må ha med hypersetup
+\usepackage[noabbrev, nameinlink]{cleveref} % to be loaded after hyperref
+\usepackage{amssymb} %\mathbb{R} for reelle tall, \mathcal{B} for "matte"-font
+\usepackage{listings} %for kode/lstlisting
+\usepackage{verbatim}
+\usepackage{graphicx,wrapfig,lipsum,caption} %for wrapping av bilder
+\usepackage{mathtools} %for \abs{x}
+\usepackage[norsk]{babel}
+\usepackage{cancel}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\author{Oskar Idland}
+\title{Oblig 7}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+
+\section*{Problem 1}
+\subsection*{a)}
+We know that
+\[
+\vec{J} = \vec{L} + \vec{S} → \vec{J}^2 = (\vec{L} + \vec{S})^2 = \vec{L}^2 + \vec{S}^2 + 2\vec{L} ⋅ \vec{S}
+\]
+We therefore know that:
+\[
+\vec{L} ⋅ \vec{S} = \frac{1}{2}(\vec{J}^2 - \vec{L}^2 - \vec{S}^2)
+\]
+We begin with $S^2$
+\[
+S^2 = ℏ^2 s(s+1)  = ℏ^2 \frac{3}{4}
+\]
+Next we have $L^2$:
+\[
+L^2 = ℏ^2 l(l+1) = 6ℏ^2
+\]
+We have $j$-values in integer steps in the range:
+\[
+\left|l-s\right| \le j \le l+s → \frac{3}{2} \le  j \le \frac{5}{2}   
+\]
+Therefore we know $j$ can be either $j_1 = 5 / 2$ or $j_2 = 3 / 2$
+Next we have $J^2$:
+    \[
+J_1^2 = ℏ^2 j_1(j_1+1) = ℏ^2 \frac{35}{4}
+\]
+\[
+J_2^2 = ℏ^2 j_2(j_2+1) = ℏ^2 \frac{15}{4}
+\]
+Then we compute the dot product for $j_1$:
+\[
+\mathbf{L} ⋅ \mathbf{S} = \frac{1}{2} \left(ℏ^2 \frac{35}{4} - 6ℏ^2 -  \frac{3}{4}ℏ^2\right) = ℏ^2
+\]
+And for $j_2$:
+\[
+    \mathbf{L} ⋅ \mathbf{S} = \frac{1}{2} \left(ℏ^2 \frac{15}{4} - 6ℏ^2 -  \frac{3}{4}ℏ^2\right) = - ℏ^2 \frac{3}{2}
+\]
+Therefore we know:
+\[
+\hat{H}_{so_{j = 5 / 2}} = λ \quad , \quad \hat{H}_{so_{j = 3 / 2}} = - \frac{3}{2} λ
+\]
+The full Hamiltonian is then dependent on the $j$-value:
+\[
+\hat{H}_j = \hat{H}_0 + \hat{H}_{so_j} 
+\]
+There are two possible values for the $m_s$, and five possible values for $m_l$. If $j = 3 / 2$ then there are  $2j + 1 = 4$ possible values for $m_j$ meaning a total degeneracy of 40. If $j = 5 / 2$ there are $2j + 1 = 6$ possible values giving a total degeneracy of 60.
+
+
+\end{document}

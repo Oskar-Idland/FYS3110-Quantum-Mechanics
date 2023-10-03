@@ -1,0 +1,261 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{enumerate}
+\newtheorem{theorem}{Theorem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\setlength{\parindent}{0cm}
+\usepackage{graphics}
+\usepackage{graphicx} % Required for including images
+\usepackage{subcaption}
+\usepackage{bigintcalc}
+\usepackage{pythonhighlight} %for pythonkode \begin{python}   \end{python}
+\usepackage{appendix}
+\usepackage{arydshln}
+\usepackage{physics}
+\usepackage{booktabs} 
+\usepackage{adjustbox}
+\usepackage{mdframed}
+\usepackage{relsize}
+\usepackage{physics}
+\usepackage[thinc]{esdiff}
+\usepackage{esint}  %for lukket-linje-integral
+\usepackage{xfrac} %for sfrac
+\usepackage{hyperref} %for linker, må ha med hypersetup
+\usepackage[noabbrev, nameinlink]{cleveref} % to be loaded after hyperref
+\usepackage{amssymb} %\mathbb{R} for reelle tall, \mathcal{B} for "matte"-font
+\usepackage{listings} %for kode/lstlisting
+\usepackage{verbatim}
+\usepackage{graphicx,wrapfig,lipsum,caption} %for wrapping av bilder
+\usepackage{mathtools} %for \abs{x}
+\usepackage[english]{babel}
+\usepackage{cancel}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\author{Oskar Idland}
+\title{Lecture 12}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+
+\part{Symmetry and Degeneracy}
+\paragraph{Definition:}
+A symmetry of a system is a transformation that leaves the Hamiltonian invariant.
+\section*{Hamiltonian Symmetry}
+Using an operator on the state.
+\[
+\ket{ψ(0)} \overset{\hat{T}}{→} \ket{ψ'(t)} 
+\]
+And after using some time evolution operator $U(t)$
+\[
+\ket{ψ(t)} \overset{\hat{T}}{←} \ket{ψ'(t)}
+\]
+$\hat{T}$ is a symmetry tranformation of the Hamiltonian if 
+\[
+\ket{ψ'(t)} = \hat{T}\ket{ψ(t)}
+\]
+For all $ψ(0)$ and all $t$.
+\[
+e^{-i\hat{H}t / ℏ} \ket{ψ'(0)} = \hat{T}e^{-i\hat{H}t / ℏ} \ket{ψ(0)}
+\]
+The following must be true
+\[
+\left[\hat{T}, e^{-i\hat{H}t / ℏ}\right] = 0
+\]
+Expanding the exponentnial. 
+\[
+\left[\hat{T}, e^{-i \hat{H}t / ℏ}\right] = \left[\hat{T}, 1 - \frac{i}{ℏ}\hat{H}t + \frac{1}{2!}\left(-\frac{i}{ℏ}\right)^2 \hat{H}^2 t^2 + \dots\right] = 0
+\]
+\[
+- \frac{it}{ℏ} \left[\hat{T}, \hat{H}\right]+  \frac{1}{2!}\left(-\frac{it}{ℏ}\right)^2 \left[\hat{T}, \hat{H}^2\right] + \dots = 0
+\]
+To hold for all $t$, \[
+\left[\hat{T}, \hat{H}\right] = 0
+\]
+When $\hat{T}$ is norm preserving (unitary), $\hat{T}^{†} = \hat{T}^{-1}$.
+
+\[
+\hat{T}\hat{H} = \hat{H}\hat{T}
+\]
+\[
+\hat{T}^{-1} \hat{T}\hat{H} = \hat{T}^{-1} \hat{H}\hat{T} = \hat{T}^{†} \hat{H}\hat{T} 
+\]
+\[
+\hat{H} = \hat{T}^{†} \hat{H}\hat{T}
+\]
+The easiest way to check if a Hamiltonian has a symmetry is to check if it commutes with some operator $\hat{T}$.
+\section*{Consequences of Symmetry}
+\begin{enumerate}
+    \item Some quantities are conserved.
+    \[
+    \left<T\right> = \bra{ψ(t)}\hat{T}\ket{ψ(t)}
+    \]
+    does not change in time. 
+    \[
+    \frac{\mathrm{d}}{\mathrm{d}}\left<T\right> = \left(\underbrace{\frac{\mathrm{d}}{\mathrm{d}t} \bra{ψ(t)} }_{- \bra{ψ(t)}\hat{H}}\right)\hat{T} \ket{ψ(t)} + \bra{ψ(t)} \hat{T} \left(\underbrace{\frac{\mathrm{d}}{\mathrm{d}t} \ket{ψ(t)}}_{\hat{H}\ket{ψ(t)}} \right) = 0
+    \]
+    \[
+    \bra{ψ(t)}\underbrace{\left[\hat{T}, \hat{H}\right]}_{0}\ket{ψ(t)}  = 0
+    \] 
+    \item Eigenstates of $\hat{T}$ will remain eigenstates as $t$ changes.
+    \[
+    \hat{T}\ket{x(t)} = λ \ket{x(t)}
+    \]
+    \[
+    \hat{T}\ket{x(t)} = \hat{T}e^{-i \hat{H}t / ℏ} \ket{x(0)} = e^{-i \hat{H}t / ℏ} \hat{T} \ket{x(0)} = λ \ket{x(t)}
+    \]
+    $\ket{x(t)}$ is and eigenstate of $\hat{T}$ with eigenvalue $λ$. 
+    \item We can construct a common complete set of eigenstates for $\hat{H}$ and $\hat{T}$. The symmetries of the Hamiltonian implies that the eigenstates of $\hat{T}$ are also eigenstates of $\hat{H}$. 
+    \item Often degenerate energy spectrum. 
+    \[
+    \hat{H}\ket{n} = E_n \ket{n}
+    \]
+    \[
+    \hat{H}\hat{T}\ket{n} = \hat{T}\hat{H}\ket{n} = E_n \hat{T}\ket{n}
+    \]
+    So $\hat{T}\ket{n}$ is also an energy eigenket with energy $E_n$. If $\hat{T}\ket{n} ≠ \ket{n}$, we have a degeneracy. If there are degeneracy, they are often a consequence of symmetry. 
+\end{enumerate}
+
+\section*{Example: Translational Symmetry}  
+$T_{a}$ is an operator that transforms $x → x + a$. 
+\[
+T_{a} \ket{x} = \ket{x + a}
+\]
+\paragraph{Taylor Expansion:}
+\[
+ψ(x+a) = ψ(x) + aψ'(x) + \frac{a^2}{2!}ψ''(x) + \dots
+\]
+\paragraph{Rewriting this as an operator:}
+\[
+T_{a} = 1 + a \frac{\mathrm{d}}{\mathrm{d}x} + \frac{a^2}{2!} \frac{\mathrm{d}^2}{\mathrm{d}x^2} + \dots
+\] 
+\[
+\hat{T} \ket{x} = \ket{x + a} = \ket{x} + a \frac{\mathrm{d}}{\mathrm{d}x} \ket{x} + \frac{a^2}{2!} \frac{\mathrm{d}^2}{\mathrm{d}x^2} \ket{x} + \dots
+\]
+Using the fact that the taylor expansion is the definition of the exponential function.
+\[
+e^{a \frac{\mathrm{d}}{\mathrm{d}x}} = e^{\frac{ia}{ℏ} \frac{ℏ}{i} \frac{\mathrm{d}}{\mathrm{d}x}}
+\]
+We see that $ℏ / i \frac{\mathrm{d}}{\mathrm{d}x}$ is the momentum operator.
+\[
+T_a = e^{i \frac{a}{ℏ} \hat{p}}
+\]
+\paragraph{Conclusion: }
+Translations are generated by the momentum operator. 
+
+If $\left[T_a, H\right] = 0$for  any $a$ then 
+\[
+\left[e^{-i \frac{a}{ℏ}\hat{p}}, \hat{H}\right] = 0
+\]
+\[
+\left[1, \hat{H}\right] + \frac{ia}{ℏ} \left[\hat{p}, \hat{H}\right] + \frac{1}{2!} \left(\frac{ia}{ℏ}\right)^2 \left[\hat{p}, \hat{H}\hat{H}\right], \ldots  = 0
+\]
+\paragraph{Conclusion: } Momentum is conserved and the system is said to be translationally invariant.
+\paragraph{Conclusion: } $\hat{H}$ is the generator of time-transformation, meaning energy is conserved.
+
+\section*{Example: Rotational Symmetry}
+Rotation around the $z$-axis done by $\hat{R}_z$.
+\[
+\hat{R}_z (ϕ) = e^{-i \frac{ϕ}{ℏ} \hat{L}_z}\quad , \quad \hat{L}_z = \frac{ℏ}{i} \frac{∂ }{∂ ϕ}
+\]
+\paragraph{Conclusion: } If $\left[R_z, H\right] = 0$ fora ll $ϕ$, then $\left[L_z, H\right] = 0$and so eigenfunctions of $L_z$ are also eigenstates of $\hat{H}$. 
+
+\paragraph{Conclusion: } If  $\left[R_x, H\right] = 0 = \left[R_y, H\right]$ then $\hat{H}$ is also rotationally symmetric about the $x$- and $y$-axes.
+
+\paragraph{Conclusion: } Then $R_x \ket{E,m}$is  also an eigenket withe energy $E$
+\[
+R_x\ket{E,m} = e^{i \frac{ϕ}{ℏ} \hat{L}_x} \ket{E,m} = \left(1 + \frac{iϕ}{2ℏ} \left(L_+ + L_-\right) + \frac{1}{2} \left(\frac{iϕ}{2ℏ}\right)^2 (L_+L_z)^2 + \ldots  \right)
+\]
+\[
+= \ket{E,m} + \frac{iϕ}{ℏ} \left(\ket{E, m+1} + \ket{E, m-1}\right) + \ldots \ket{E, m+2}, \ket{E, m+1}
+\]
+\[
+≠  \ket{E, m}
+\]
+\paragraph{Conclusion: } The rotational symmetry implies the degeneracy of energy levels with different $m$-values.
+
+\section*{Example: Parity (space inversion) Symmetry}
+Defined for position eigenkets. 
+\[
+\hat{Π} \ket{r} = \ket{-r}
+\]
+\[
+\hat{Π}^2 \ket{r} = \ket{r}
+\]
+\paragraph{Fact: } $\hat{Π}$ is Hermitian. 
+\[
+\bra{u}\hat{Π}^{†}\ket{v} = \bra{v}\hat{Π}\ket{u}^{*} = \left[ ∫ v^{*}(r) \underbrace{\hat{Π} u(r)}_{u(-2)} \ \mathrm{d}r^3\right]^{*} = \left[∫ _{\hat{r} → - \hat{r}} v^{*}(-r) u(r)\right]^{*}
+\]
+\[
+∫  u^{*}(r) v(-r) = \bra{u}\hat{Π}\ket{v}
+\]
+\[
+\hat{Π}^{†} = \hat{Π}
+\]
+\[
+\hat{Π} = \hat{Π}^{-1} = \hat{Π}^{†} 
+\]
+This results in eigenvalues being $± 1$. 
+\[
+\hat{Π} \ket{\pm} = \pm \ket{\pm}
+\]
+$\ket{+}$ is an even parity state, while $\ket{-}$ is an odd parity state.
+
+\[
+\bra{r}\hat{Π}^{†} \hat{r} \hat{Π}\ket{r} = \bra{-r} \hat{r} \ket{-r} = - r \bra{-r}\ket{-r}
+\]
+\[
+\hat{Π}^{†} \hat{r} \hat{Π} = - \hat{r} → \hat{r}\hat{Π} = - \hat{Π} \hat{r}. 
+\]
+This also holds for momentum operator. 
+We can check if $\left[\hat{H}, \hat{Π}\right] = 0$. 
+\[
+\hat{H} = \frac{\hat{p}^2}{2m}
+\]
+\[
+\left[\hat{H}, \hat{Π}\right] = \frac{1}{2m} \left[\hat{p}^2, \hat{Π}\right] = \frac{1}{2m} \left(\hat{p} \hat{p} \hat{Π} - \hat{Π} \hat{p} \hat{p}\right) = \frac{1}{2m} \left(-\hat{p} \hat{Π} \hat{p} + \hat{p} \hat{Π} \hat{p}\right) = 0
+\]
+\paragraph{Conclusion: } $\hat{Π}$is  a symmetry and we can construct a common set of eigenkets for each $\hat{H}$ and $\hat{Π}$.
+\paragraph{Coclusion: } The energy eigenkets are 
+\[
+e^{i \vec{k} \vec{r}} \quad , \quad E = \frac{ℏ^2 k^2}{2m}
+\]
+\[
+\hat{Π}e^{i \vec{k} \vec{r}} = e^{-i \vec{k} \vec{r}} 
+\]
+We get that $\cos \vec{k} \vec{r}$and  $\sin \vec{k} \vec{r}$ are parity eigenstate as well for + and - respectively. 
+\paragraph{Conclusion: } All non zeros values of $\vec{k}$ gives degeneracy. The only non-degenerate state is the ground state. 
+
+
+
+
+
+
+\end{document}

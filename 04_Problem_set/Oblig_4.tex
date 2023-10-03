@@ -1,0 +1,282 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{enumerate}
+\newtheorem{theorem}{Theorem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\setlength{\parindent}{0cm}
+\usepackage{graphics}
+\usepackage{graphicx} % Required for including images
+\usepackage{subcaption}
+\usepackage{bigintcalc}
+\usepackage{pythonhighlight} %for pythonkode \begin{python}   \end{python}
+\usepackage{appendix}
+\usepackage{arydshln}
+\usepackage{physics}
+\usepackage{tikz-cd}
+\usepackage{booktabs} 
+\usepackage{adjustbox}
+\usepackage{mdframed}
+\usepackage{relsize}
+\usepackage{physics}
+\usepackage[thinc]{esdiff}
+\usepackage{fixltx2e}
+\usepackage{esint}  %for lukket-linje-integral
+\usepackage{xfrac} %for sfrac
+\usepackage[colorlinks=true]{hyperref} %for linker, må ha med hypersetup
+\usepackage[noabbrev, nameinlink]{cleveref} % to be loaded after hyperref
+\usepackage{amssymb} %\mathbb{R} for reelle tall, \mathcal{B} for "matte"-font
+\usepackage{listings} %for kode/lstlisting
+\usepackage{verbatim}
+\usepackage{graphicx,wrapfig,lipsum,caption} %for wrapping av bilder
+\usepackage{mathtools} %for \abs{x}
+\usepackage[norsk]{babel}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\author{Oskar Idland}
+\title{Oblig 4}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+
+
+\subsection*{4.9 (H)}
+The following are the eigenvalue equations for the raising and lowering operator:
+\[
+\hat{L}_{+} \ket{k,m} = c_{+} \ket{k,m+1} \quad , \quad \hat{L}_{-} \ket{k,m} = c_{-} \ket{k,m-1}
+\]
+It follows that 
+
+\begin{align*}
+    \bra{l, m}\hat{L}_{-}\hat{L}_{+}\ket{l, m} &= c_{+}\bra{l, m}\hat{L}_{-}\ket{l, m+1} \\
+    &= c_{+}\bra{l, m+1}\hat{L}^{†}_{-}\ket{l, m}^{*} \\
+    &= c_{+}\bra{l, m+1}L_{+}\ket{l, m}* \\
+    &= \left|c_{+}\right|^2
+\end{align*}
+We also know that 
+\[
+\hat{L}_{-}\hat{L}_{+} = \hat{L}^2 - \hat{L}_z + \hbar \hat{L}_z
+\]
+which we can replace in the previous equation. 
+\begin{align*}
+    \bra{l, m}\hat{L}_{-}\hat{L}_{+}\ket{l, m} &= \bra{l, m}\hat{L}^2 - \hat{L}_z + \hbar \hat{L}_z\ket{l, m} \\
+    &= ℏ^2 \bra{l,m}l(l+1) - m^2 - m\ket{l,m} \\
+    &= ℏ^2 \left(l(l+1) - m(m+1)\right)
+\end{align*}
+Combining the results from solving both equations we get the following. 
+\[
+c_{+}^2 = ℏ^2 \left(l(l+1) - m(m+1)\right)
+\]
+\[
+\underline{\underline{c_{+} = ℏ \sqrt{l(l+1) - m(m+1)}}}
+\]
+
+We can then repeat the process, just switching the raising and lowering operators.
+\begin{align*}
+    \bra{l,m}\hat{L}_{+}\hat{L}_{-}\ket{l,m} &= c_{-}\bra{l,m}\hat{L}_{+}\ket{l,m-1} \\
+    &= c_{-}\bra{l,m-1}\hat{L}^{†}_{+}\ket{l,m}^{*} \\
+    &= c_{-}\bra{l,m-1}\hat{L}_{-}\ket{l,m}^{*} \\
+    &= \left|c_{-}\right|^2
+\end{align*}
+Again using the following:
+\[
+\hat{L}_{+}\hat{L}_{-} = \hat{L}^2 - \hat{L}_z + \hbar \hat{L}_z
+\]
+We get: 
+\begin{align*}
+    \bra{l,m}\hat{L}_{+}\hat{L}_{-}\ket{l,m} &= \bra{l,m}\hat{L}^2 - \hat{L}_z + \hbar \hat{L}_z\ket{l,m} \\
+    &= ℏ^2 \bra{l,m}l(l+1) - m^2 + m\ket{l,m} \\
+    &= ℏ^2 \left(l(l+1) - m(m-1)\right)
+\end{align*}
+
+\[
+\underline{\underline{c_{-} = ℏ \sqrt{l(l+1) - m(m-1)}}}
+\]
+
+\section*{4.10 (H)}
+\subsection*{a)}
+The position operator can be expressed in terms of the raising and lowering operators as follows:
+\[
+\hat{X} = \sqrt{\frac{ℏ}{2mω}}\left(\hat{a} + \hat{a}^{\dagger}\right)
+\]
+Using this we get 
+\begin{align*}
+    X_{nm} &= \bra{n}\hat{X}\ket{m} \\
+    &= \sqrt{\frac{ℏ}{2mω}}\bra{n}\left(\hat{a} + \hat{a}^{\dagger}\right)\ket{m} \\
+    &= \sqrt{\frac{ℏ}{2mω}} \bra{n} \Bigl( \hat{a}\ket{m} + \hat{a}^{†} \ket{m} \Bigr) \\
+    &= \sqrt{\frac{ℏ}{2mω}} \left( \sqrt{m} \bra{n}\ket{m-1} + \sqrt{m+1}\bra{n}\ket{m+1} \right) \\
+    &= \sqrt{\frac{ℏ}{2mω}} \left( \sqrt{m} \delta_{n,m-1} + \sqrt{m+1}\ \delta_{n,m+1} \right) \\
+\end{align*}
+
+\subsection*{b)}
+Using the definition of a unit norm we can solve the following:
+\[
+\left|\bra{ψ(0)}\ket{ψ(0)}\right|^2 = 1
+\]
+Replacing this with the sum. 
+\[
+\left|∑_{n=0}^{∞} c_n^{*} \bra{n} ∑_{n=0}^{∞} c_n \ket{n}\right|^2 = 1
+\]
+\[
+∑_{n=0}^{∞} \left|c_n\right|^2 = 1
+\]
+We can use this to find the time-dependent state
+\[
+\ket{ψ(t)} = \hat{U}(t)\ket{ψ(0)}
+\]
+\[
+\ket{ψ(t)} = e^{-i\hat{H}t/ℏ}∑_{n=0}^{∞} c_n \ket{n}
+\]
+We use that the energy eigenkets for the harmonic oscillator have corresponding energies. 
+\[
+E_n = \left(n + \frac{1}{n}\right)ℏω \quad , \quad n = 0,1,2, \ldots,  ∞
+\]
+\[
+\ket{ψ(t)} = ∑_{n=0}^{∞} c_n e^{-iω \left(n + \frac{1}{2}\right)t} \ket{n}
+\]
+
+\subsection*{c)}
+\[
+\bra{ψ(t)}\hat{H}\ket{ψ(t)}
+\]
+\[
+\left(∑_{n=0}^{∞} c_n^{*} e^{iω\left(n + \frac{1}{2}\right)t} \bra{n}\right) \hat{H} \left(∑_{n=0}^{∞} c_n e^{-iω\left(n + \frac{1}{2}\right)t} \ket{n}\right)
+\]
+Applying the operator on the ket
+\[
+\left(∑_{n=0}^{∞} c_n^{*} e^{iω\left(n + \frac{1}{2}\right)t} \bra{n}\right) \left(∑_{n=0}^{∞} c_n e^{-iω\left(n + \frac{1}{2}\right)t} \left(n + \frac{1}{2}\right)ℏω \ket{n}\right)
+\]
+\[
+\underline{\underline{ℏω ∑_{n=0}^{∞} \left|c_n\right|^2 \left(n + \frac{1}{2}\right)}}
+\]
+
+\[
+\bra{ψ(t)}\hat{X}\ket{ψ(t)} = \left(∑_{n=0}^{∞} c_n^{*} e^{iω \left(n + \frac{1}{2}\right)t} \bra{n}\right) \hat{X} \left(∑_{n=0}^{∞} c_n e^{-iω \left(n + \frac{1}{2}\right)t} \ket{n}\right)
+\]
+Applying the operator on the ket
+\[
+\sqrt{\frac{ℏ}{2mω}} \left(∑_{n=0}^{∞} c_n^{*} e^{iω\left(n+ \frac{1}{2}\right)t} \bra{n}\right) \left(∑_{n=1}^{∞} c_n e^{-iω \left(n + \frac{1}{2}\right)t}\sqrt{n} \ket{n-1} + ∑_{n=0}^{∞} c_n e^{-iω \left(n + \frac{1}{2}\right)t}\sqrt{n +1}\ket{n+1}\right)
+\]
+\[
+\sqrt{\frac{ℏ}{2mω}} \left(∑_{n=0}^{∞} c_n^{*}c_{n+1} \sqrt{n+1}e^{-iωt} + ∑_{n=1}^{∞} c_n^{*} c_{n-1} \sqrt{n}e^{iωt}\right)
+\]
+\[
+\sqrt{\frac{ℏ}{2mω}} \left(∑_{n=0}^{∞} c_n^{*} c_{n+1} \sqrt{n + 1}e^{-iωt} + ∑_{n=0}^{∞} c^{*}_{n+1}c_n \sqrt{n+1}e^{iωt}\right)
+\]
+\[
+\sqrt{\frac{ℏ}{2mω}} ∑_{n=0}^{∞} \sqrt{n+1} \left(c_n^{*} c_{n+1}e^{-iωt} + c^{*}_{n+1}c_n e^{iωt}\right)  
+\]
+\[
+\sqrt{\frac{ℏ}{2mω}} ∑_{n=0}^{∞} \sqrt{n+1} \left(c_n^{*} c_{n+1}e^{-iωt} + \left(c^{*}_{n+1}c_n e^{iωt}\right)^{*}\right)
+\]
+\[
+\underline{\underline{\sqrt{\frac{2ℏ}{mω}} ∑_{n=0}^{∞} ℜ \left\{\sqrt{n+1}c_n^{*} c_{n+1}e^{-iω}\right\}}} 
+\]
+
+\subsection*{d)}
+Defining the coefficients
+\[
+c_0 = e^{α^2 / 2} \quad , \quad c_n = c_0 \frac{α^{n}}{\sqrt{n!}} \quad , \quad α ∈ ℝ_{>0}
+\]
+\begin{align*}
+    \bra{ψ(t)}\hat{X}\ket{ψ(t)} &= \sqrt{\frac{2ℏ}{mω}} ℜ \left\{ \sqrt{n+1}\left(c_0 \frac{α^{n}}{\sqrt{n!}}\right)^{*} \left(c_0 \frac{α^{n+1}}{\sqrt{(n+1)!}}\right) e^{-iωt} \right\} \\ 
+    &= \sqrt{\frac{2ℏ}{mω}} ∑_{n=0}^{∞} \sqrt{n+1}c_0^2 \frac{α^{2n+1}}{\sqrt{n!(n+1)!}} ℜ \left\{ e^{-iωt} \right\} \\
+    &= \sqrt{\frac{2ℏ}{mω}} ∑_{n=0}^{∞} c_0^2  α\frac{α^{2n}}{n!} \cos(ωt) \\
+    &= \sqrt{\frac{2ℏ}{mω}} c_0^2 α \cos(ωt) ∑_{n=0}^{∞} \frac{\left(α^{n}\right)^2}{n!} \\
+    &= \sqrt{\frac{2ℏ}{mω}} e^{-α^2} \cos(ωt) e^{α^2} \\
+    &= \underline{\underline{\sqrt{\frac{2ℏ}{mω}} α\cos(ωt)}}
+\end{align*}
+
+In classical physics we have defined the position of an harmonic oscillator as follows:
+\[
+x(t) = A \cos (ωt + ϕ) \quad , \quad ω = \sqrt{\frac{k}{m}}
+\]
+with $ϕ$ being the phase, $A$ being the amplitude and $ω$ being the angular frequency. We can also define $k = mω^2$. We use this to define the amplitude 
+\[
+\frac{kA^2}{2}  = \bra{ψ(t)}\hat{H}\ket{ψ(t)}
+\]
+\[
+\frac{mω^2A^2}{2} = ℏω ∑_{n=0}^{∞} \left|c_n\right|^2 \left(n + \frac{1}{2}\right)
+\]
+\[
+\frac{mω^2A^2}{2} = ℏω \left(∑_{n=0}^{∞} \left(c_0 \frac{α^{n}}{\sqrt{n!}}\right)^2 \left(n + \frac{1}{2}\right) \right)
+\]
+\[
+A^2 = \frac{2ℏ}{mω^2} c_0^2 \left(∑_{n=0}^{∞} n \frac{α^{2n}}{n!} + \frac{1}{2} ∑_{n=0}^{∞} \frac{α^{2n}}{n!}\right)
+\]
+\[
+A^2 = \frac{2ℏ}{mω^2} e^{-α^2} \left(α^2 ∑_{n=0}^{∞} \frac{α^{2n}}{n!} + \frac{1}{2} ∑_{n=0}^{∞} \frac{α^{2n}}{n!}\right)
+\]
+\[
+A^2 = \frac{2ℏ}{mω^2} e^{-α^2} \left(α^2 + \frac{1}{2}\right)e^{α^2}
+\]
+\[
+\underline{\underline{A = \sqrt{\frac{2ℏ}{mω} \left(α^2 + \frac{1}{2}\right)}}}
+\]
+The amplitude must be a positive and real number. I ignore the phase $ϕ$ and we get the final expression for $x$.
+\[
+x(t) = \sqrt{\frac{2ℏ}{mω} \left(α^2 + \frac{1}{2}\right)} \cos(ωt)
+\]
+
+We see a difference in the amplitude of the expected value of the quantum mechanical position and the classical position. They share the same angular frequency. The quantum mechanical expectation values does not tell us the exact position of the particle, but rather the expected value from many measurements. 
+
+\section*{4.11 (H)}
+\subsection*{a)}
+The ladder operators are defined as the following:
+\[
+\hat{a}_x = \sqrt{\frac{mω}{2ℏ}} \hat{X} + \frac{i}{\sqrt{2mωℏ}}\hat{P}_x \quad , \quad \hat{a}_x^{†} = \sqrt{\frac{mω}{2ℏ}} \hat{X} - \frac{i}{\sqrt{2mωℏ}}\hat{P}_x
+\]
+\[
+\hat{a}_y = \sqrt{\frac{mω}{2ℏ}} \hat{Y} + \frac{i}{\sqrt{2mωℏ}}\hat{P}_y \quad , \quad \hat{a}_y^{†} = \sqrt{\frac{mω}{2ℏ}} \hat{Y} - \frac{i}{\sqrt{2mωℏ}}\hat{P}_y
+\]
+
+We can calculate further:
+\[
+\hat{a}_x^{†}\hat{a}_x = \left( \sqrt{\frac{mω}{2ℏ}}\hat{X} - \frac{i}{\sqrt{2mωℏ}}\hat{P}_x \right) \left( \sqrt{\frac{mω}{2ℏ}}\hat{X} + \frac{i}{\sqrt{2mωℏ}}\hat{P}_x \right)
+\]
+\[
+\hat{a}_x^{†}\hat{a}_x = \frac{mω}{2ℏ}\hat{X}^2 + \frac{i}{2ℏ} \left[\hat{X}, \hat{P}_x\right] + \frac{1}{2mωℏ}\hat{P}_x^2
+\]
+\[
+\hat{a}_x^{†}\hat{a}_x = \frac{1}{ℏω} \left(\frac{1}{2} mω^2 \hat{X}^2 + \frac{1}{2m}\hat{P}_x^2\right) - \frac{1}{2}
+\]
+Furthermore we have:
+\[
+\hat{a}^{†}_y \hat{a}_y = \frac{1}{ℏω} \left(\frac{1}{2} mω^2 \hat{Y}^2 + \frac{1}{2m}\hat{P}_y^2\right) - \frac{1}{2}
+\]
+
+We can use this to show the following:
+\begin{align*}
+    ℏω(\hat{a}^{†}_x \hat{a}_x + \hat{a}^{†}_y \hat{a}_y + 1) &= \frac{1}{2}mω^2 \hat{X}^2 + \frac{1}{2m} \hat{P}_x^2 + \frac{1}{2}mω^2 \hat{Y}^2 + \frac{1}{2m}P_y^2 - \frac{mω}{2} - \frac{mω}{2} - mω \\
+    &= \frac{1}{2m}\hat{P}_x^2 + \frac{1}{2m}\hat{P}_y^2 + \frac{1}{2}mω^2 \hat{X}^2 + \frac{1}{2}mω^2 \hat{Y}^2 \\ 
+    ℏω(\hat{a}^{†}_x \hat{a}_x + \hat{a}^{†}_y \hat{a}_y + 1) &= \hat{H}
+\end{align*}
+
+
+\end{document}

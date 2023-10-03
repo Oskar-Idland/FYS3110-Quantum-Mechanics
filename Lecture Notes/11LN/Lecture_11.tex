@@ -1,0 +1,206 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{enumerate}
+\newtheorem{theorem}{Theorem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\setlength{\parindent}{0cm}
+\usepackage{graphics}
+\usepackage{graphicx} % Required for including images
+\usepackage{subcaption}
+\usepackage{bigintcalc}
+\usepackage{pythonhighlight} %for pythonkode \begin{python}   \end{python}
+\usepackage{appendix}
+\usepackage{arydshln}
+\usepackage{physics}
+\usepackage{booktabs} 
+\usepackage{adjustbox}
+\usepackage{mdframed}
+\usepackage{relsize}
+\usepackage{physics}
+\usepackage[thinc]{esdiff}
+\usepackage{esint}  %for lukket-linje-integral
+\usepackage{xfrac} %for sfrac
+\usepackage{hyperref} %for linker, må ha med hypersetup
+\usepackage[noabbrev, nameinlink]{cleveref} % to be loaded after hyperref
+\usepackage{amssymb} %\mathbb{R} for reelle tall, \mathcal{B} for "matte"-font
+\usepackage{listings} %for kode/lstlisting
+\usepackage{verbatim}
+\usepackage{graphicx,wrapfig,lipsum,caption} %for wrapping av bilder
+\usepackage{mathtools} %for \abs{x}
+\usepackage[norsk]{babel}
+\usepackage{cancel}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\author{Oskar Idland}
+\title{Lecture 11}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+\section*{2 spin - 1/2 system}
+\[
+\ket{t} = \frac{1}{\sqrt{2}}\left( \ket{↑} \otimes \ket{↓} + \ket{↓} \otimes  \ket{↑}\right)
+\]
+\paragraph{Probability to measure spin 1 to be $ℏ / 2$ along z-axis}
+We define spin 1 to be when the first spin is up and the second is down. Spin 2 is when the first spin is down and the second is up. 
+\[
+P_t = \bra{t} \Big(\ket{↑}\bra{↑} ⊗  I\Big) \ket{t} = \frac{1}{2} \Big( \bra{↑} ⊗  \bra{↓} + \bra{↓} ⊗  \bra{↑}\Big) \underbrace{\Big(\ket{↑}\bra{↑} ⊗  I\Big) \Big( \ket{↑} ⊗  \ket{↓} + \ket{↓} ⊗  \ket{↑}\Big)}_{\ket{↑} ⊗ \ket{↓}}
+\]
+\[
+P_t = \frac{1}{2} \Bigl( \bra{↑}\ket{↑} \bra{↓}\ket{↓} + \bra{↓}\ket{↑} \bra{↑}\ket{↓}\Bigr) = \frac{1}{2}
+\]
+\section*{Total Angular Momentum}
+The total angular momentum is the sum of orbital and spin angular momentum
+\[
+\vec{J} = \vec{L} + \vec{S}
+\]
+This is actually represented on the form:
+\[
+\vec{J} = \vec{L} ⊗  I + I ⊗  \vec{S}
+\]
+\subsection*{Commutation}
+\[
+\left[\hat{L}, \hat{S}\right] = \left[\hat{L} ⊗ I, \hat{S} ⊗ I\right]
+\]
+\[
+\left(L ⊗ I\right)\left(I ⊗ S\right) - \left(I ⊗ S\right) \left(L ⊗ I\right)
+\]
+\[
+L ⊗ S - L ⊗ S = 0
+\]
+\subsection*{Total spin of two spin 1/2 particles}
+\paragraph{Total spin of two particles spinning up}
+\[
+\vec{S}^{\text{tot}} = \vec{S} ⊗ I + I ⊗ \vec{S} 
+\]
+\[
+\vec{S}^{\text{tot}} =S_z ⊗ I + I ⊗ S_z
+\]
+\[
+S_z^{\text{tot}} \ket{↑} ⊗ \ket{↑}=  \Big(S_z ⊗ I + I ⊗ S_z\Big) \ket{↑} ⊗ \ket{↑} = \frac{ℏ}{2} \ket{↑} ⊗ \ket{↑} + \frac{ℏ}{2} \ket{↑} ⊗ \ket{↑} = ℏ \ket{↑} ⊗ \ket{↑}
+\]
+\paragraph{Total spin of one particle spinning up and one spinning down}
+\[
+S_z^{\text{tot}} \ket{↑} ⊗ \ket{↓} = \Big(S_z ⊗ I + I ⊗ S_z\Big) \ket{↑} ⊗ \ket{↓} = \frac{ℏ}{2} \ket{↑} ⊗ \ket{↓} + \frac{ℏ}{2} \ket{↑} ⊗ \ket{↓} = 0
+\]
+Naturally we se that the total spin is just the sum of the spin of each particle. 
+Its easy then to see that
+\[
+S_z^{\text{tot}} \ket{↓} ⊗ \ket{↑} = 0 \quad , \quad S_z^{\text{tot}} \ket{↓} ⊗ \ket{↓} = - ℏ \ket{↓} ⊗ \ket{↓}
+\]
+\subsection*{Eigenstate of total spin $S^{\text{tot}}$ squared}
+\[
+\vec{S}^{\text{tot}^2} = \vec{S}^{\text{tot}} ⋅ \vec{S}^{\text{tot}}
+\]
+\[
+\vec{S}^{\text{tot}^2} = \Bigl(\vec{S} ⊗ I + I ⊗ \vec{S}\Bigr) ⋅ \Bigl(\vec{S} ⊗ I + I ⊗ \vec{S}\Bigr)
+\]
+\[
+\vec{S}^{\text{tot}^2}=  \vec{S}^2 ⊗ I + I ⊗ \vec{S}^2 + 2 \Bigl(S_x ⊗  S_x + S_y ⊗ S_y + S_z ⊗ S_z\Bigr)
+\]
+We must define $S_i$ in terms of the raising and lowering operators. 
+\[
+S_x ⊗ S_x = \frac{1}{4} \Bigl(S_+ + S_-\Bigr) ⊗ \Bigl(S_+ + S_-\Bigr)
+\]
+\[
+S_y ⊗ S_y = \frac{1}{4} \Bigl(S_{+} S_-\Bigr) ⊗ \Bigl(S_+ + S_-\Bigr) 
+\]
+\[
+S_x ⊗ S_x+  S_y ⊗ S_y = \frac{1}{2} \Bigl(S_+ ⊗  S_- + S_- ⊗ S_+\Bigr)
+\]
+We can now derive the total:
+\[
+S^{\text{tot}^2} = S^2 ⊗ I + I ⊗ S^2 + S_+ ⊗ S_- + S_- ⊗ S_+ + 2 S_z ⊗ S_z
+\]
+
+\paragraph{Eigenstate of total spin $S^{\text{tot}}$ squared for two particles spinning up}
+
+\[
+S^{\text{tot}^2} \ket{↑} ⊗ \ket{↑} = \Bigl(S^2 ⊗ I + I ⊗ S^2 + S_+ ⊗ S_- + S_- ⊗ S_+ + 2 S_z ⊗ S_z\Bigr) \ket{↑} ⊗ \ket{↑}
+\]
+\[
+S^{\text{tot}^2} \ket{↑} ⊗ \ket{↑} = ℏ^2 \frac{3}{4} \ket{↑} ⊗ \ket{↑} + ℏ^2 \frac{3}{4} \ket{↑} ⊗ \ket{↑} + ℏ^2 \ket{\text{NULL}} ⊗ \ket{↓} + \ket{\text{NULL}} + 2 \left(\frac{ℏ}{2}\right)^2 \ket{↑} ⊗ \ket{↑} 
+\]
+\[
+S^{\text{tot}^2} \ket{↑} ⊗ \ket{↑} = ℏ^2 \left(\frac{3}{4} + \frac{3}{4} + \frac{1}{2}\right) \ket{↑} ⊗ \ket{↑} = 2ℏ^2 \ket{↑} ⊗ \ket{↑}
+\]
+\paragraph{Eigenstate of total spin $S^{\text{tot}}$ of two particles spinning down}
+\[
+S^{\text{tot}^2} \ket{↓} ⊗ \ket{↓} = 2ℏ^2 \ket{↓} ⊗ \ket{↓}
+\]
+\paragraph{Eigenstate of total spin $S^{\text{tot}}$ of one particle spinning up and one spinning down}
+\[
+S^{\text{tot}^2} \ket{↑} ⊗ \ket{↓} = \Bigl(S^2 ⊗ I + I ⊗ S^2 + S_+ ⊗ S_- + S_ ⊗ S_+ + 2S_z ⊗ S_z\Bigr) \ket{↑} ⊗ \ket{↓}
+\]
+\[
+ℏ^2 \frac{3}{4} \ket{↑} ⊗ \ket{↓} + h^2 \frac{3}{4} \ket{↑} ⊗ \ket{↓} + 0 + ℏ^2 \ket{↓} ⊗ \ket{↑} + 2 \frac{ℏ}{2} ⋅ \left(\frac{ℏ}{2}\right) \ket{↑} ⊗ \ket{↓}
+\]
+\[
+ℏ^2 \Bigl(\ket{↑} ⊗ \ket{↓} + \ket{↓} ⊗ \ket{↑}\Bigr)
+\]
+\paragraph{Eigenstate of total spin $S^{\text{tot}}$ of one particle down up and one spinning up}
+\[
+\vec{S}^{\text{tot}^2} \ket{↓} ⊗ \ket{↑} = ℏ^2 \Big(\ket{↓} ⊗ \ket{↑} + \ket{↑} ⊗ \ket{↓}\Big)
+\]
+
+
+
+\paragraph{Conclusion: }
+$\ket{↑} ⊗  \ket{↓}$ and $\ket{↓} ⊗ \ket{↑}$ are not eigenstates but $\ket{↑} ⊗ \ket{↑}$ and $\ket{↓} ⊗ \ket{↓}$ are.
+
+\subsection*{Creating Linear Combinations}
+\[
+S^{\text{tot}^2} \Big(\ket{↑}⊗ \ket{↓} - \ket{↓} ⊗ \ket{↑}\Big) = 0
+\]
+This is an eigenstate. Also known as the singlet state
+
+\[
+S^{\text{tot}^2} \Big(\ket{↑}⊗ \ket{↓} + \ket{↓} ⊗ \ket{↑}\Big) = 2 ℏ^2 \Big(\ket{↑ }⊗ \ket{↓} + \ket{↓} ⊗ \ket{↑}\Big)
+\]
+This is one of the three parts of the triplet state. The other being $\ket{↑} ⊗ \ket{↑}$ and $\ket{↓} ⊗ \ket{↓}$
+
+\section*{General Combinations of ang.mom. states}
+\[
+\ket{sm} = ∑_{m_1 m_2}^{} C_{m_1 m_2}^{S_1 S_2 S} \ket{s_1 m_1} ⊗ \ket{s_2 m_2}
+\]
+where $C$ is the Clebsch-Gordan coefficient.
+\[
+\ket{s_1 m_1} ⊗ \ket{s_2 m_2}=  ∑_{m_1 m_2}^{} C_{m_1 m_2}^{S_1 S_2 S} \ket{s m}
+\]
+
+\paragraph{a spin - 3 / 2 with a spin-1 to get a total spin 3/2, m = 3/2}
+\[
+\ket{3 / 2, + \ket{3 / 2}}
+\]
+Reading from the table we see the column of 3/2 and +3/2, having values 3/5 square root of 3/5 for m1 = +3/2 and s1 = 0. We get the negative of the square root of 2/5 for m1 = +1/2 and s1 = 1.
+\[
+\ket{\underbrace{3 / 2}_{s}, + \underbrace{\ket{3 / 2}}_{m}} = \sqrt{\frac{3}{5}} \ket{\underbrace{3 / 2}_{s_1}, + \ket{\underbrace{3 / 2}_{m_1}}} ⊗ \ket{\underbrace{1}_{s_2},\underbrace{0}_{m_2}} - \sqrt{\frac{2}{5}} \ket{\underbrace{3 / 2}_{s_1}, + \ket{\underbrace{1 / 2}_{m_1}}} ⊗ \ket {\underbrace{1}_{s_2},\underbrace{+1}_{m_2}} 
+\]  
+\end{document}

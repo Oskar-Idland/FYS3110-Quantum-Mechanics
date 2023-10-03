@@ -7,6 +7,7 @@
 \newtheorem{theorem}{Theorem}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \setlength{\parindent}{0cm}
 \usepackage{graphics}
 \usepackage{graphicx} % Required for including images
@@ -22,7 +23,6 @@
 \usepackage{relsize}
 \usepackage{physics}
 \usepackage[thinc]{esdiff}
-\usepackage{fixltx2e}
 \usepackage{esint}  %for lukket-linje-integral
 \usepackage{xfrac} %for sfrac
 \usepackage{hyperref} %for linker, må ha med hypersetup
@@ -58,7 +58,7 @@
 }
 
 \lstset{style=mystyle}
-\author{Oskar Idland}
+\author{}
 \title{Problem  Set 2}
 \date{}
 \begin{document}
@@ -70,56 +70,493 @@
 \ket{ψ} = ∑_{i=1}^{2} ψ_i \ket{a_i} = ∑_{i=1}^{2} ψ_i' \ket{a_i'}
 \]
 
-As the two bases are orthonormal, we can express $ψ_i$ in the following manner:
+We can express $ψ_i$ in the following manner:
 
 \[
-∑_{i=1}^2 ψ_i = ∑_{i=1}^2 \bra{a_i} ψ_i' \ket{a_i'}  
+ψ_i = ∑_{i=1}^2 \bra{a_i} ψ_i' \ket{a_i'} = \underline{\underline{∑_{i=1}^{2} ψ_i' \bra{a_i} \ket{a_i'}}}
 \]
 
 We can then express $ψ_i'$ in terms of $ψ_i$:
 
 \[
-∑_{i=1}^{2} ψ_i' = ∑_{i=1}^{2} \bra{a_i'} ψ_i \ket{a_i}
+ ψ_i' = \underline{\underline{∑_{i=1}^{2} ψ_i\bra{a_i'} \ket{a_i}}}
 \]
 
 
 \section*{Problem 2.2 (L)}
-We begin by creating a matrix to convert from the basis  $B =  \left\{\begin{pmatrix*}[r]
+
+We begin by creating a matrix $T$ to convert from the basis  $B =  \left\{\begin{pmatrix*}[r]
  1 \\
  0 \\
 \end{pmatrix*}, \begin{pmatrix*}[r]
  0 \\
  1 \\
-\end{pmatrix*}\right\}$ into the new basis of $B' = \left\{\frac{1}{\sqrt{2}} \begin{pmatrix*}[r]
+\end{pmatrix*}\right\}$ 
+into the new basis of $B' = \left\{\frac{1}{\sqrt{2}} \begin{pmatrix*}[r]
  1 \\
  1 \\
 \end{pmatrix*}, \frac{1}{\sqrt{2}} \begin{pmatrix*}[r]
  -1 \\
  1 \\
-\end{pmatrix*}\right\}$. By getting the combined matrix of the basis vectors into row reduced echelon form.  
+\end{pmatrix*}\right\}$.
+By using the transformation matrix $T$ given by: 
 \[
+T = 
+\begin{bmatrix*}[r]
+ \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}  \\
+ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}  \\
+\end{bmatrix*}
+\]
+We also need the inverse matrix $T^{-1}$ to transform from our basis $B$ into the other basis $B'$. 
+\[
+\begin{bmatrix*}[r]
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 1 & 0 \\
+    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0 & 1 \\
+\end{bmatrix*} ∼ 
 \begin{bmatrix*}[r]
  1 & 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
  0 & 1 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
 \end{bmatrix*}
 \]
-The last two columns creates the transformation matrix $T$. 
+The last two columns of the matrix forms the inverse matrix $T^{-1}$.
 \[
-\hat{O}' = T \hat{O}
+T^{-1} = 
+\begin{bmatrix*}[r]
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+\end{bmatrix*}
+\]
+This gives us the operator $\hat{O}'$.
+\[
+\hat{O}' = T^{-1} \hat{O} T = 
+\begin{bmatrix*}[r]
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+\end{bmatrix*}
+\begin{bmatrix*}[r]
+ 0 & -i \\
+ i & 0 \\
+\end{bmatrix*}  
+\begin{bmatrix*}[r]
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+\end{bmatrix*} = 
+\underline{\underline{\begin{bmatrix*}[r]
+ 0 & i \\  
+ -i & 0 \\  
+\end{bmatrix*} = 
+-\hat{O} = \hat{O}^{T}}}
 \]
 
-
 \section*{Problem 2.3 (L)}
-We can see that $\hat{O}^{†} = \hat{O}$
+\[
+\bra{w}\hat{O}^{†}\ket{w} = \bra{w}\hat{O}\ket{w}^{*}
+\]
+We define $\ket{w} = \ket{u} + \ket{v}$. 
+\[
+\left(\bra{u} + \bra{v}\right) \hat{O}^{†} \left(\ket{u} + \ket{v}\right) = \left(\bra{u} + \bra{v}\right) \hat{O} \left(\ket{u} + \ket{v}\right)^{*}
+\]
 
 
 \section*{Problem 2.4 (L)}
 When an operator acts on its eigenstate, it returns the eigenvalue times the eigenstate.
 \[
-∴ \bra{λ}\hat{K}\ket{u} = λ\bra{λ}\ket{u}
+\hat{K}\ket{λ} = λ\ket{λ}
+\]
+The eigenvalues are real and the operator Hermitian, so the following must be true if we conjugate both sides:
+\[
+\bra{u}\hat{K}\ket{λ} = λ\bra{u}\ket{λ}
+\]
+\[
+\left(\bra{u}\hat{K}\ket{λ}\right)^{†} = \left(λ\bra{u}\ket{λ}\right)^{†}
+\]
+\[
+\bra{λ}\hat{K}^{†}\ket{u} = λ^{*}\bra{λ}\ket{u}
+\]
+\[
+∴ \bra{λ}\hat{K}\ket{u} = λ \bra{λ}\ket{u}
 \]
 
 \section*{Problem 2.5 (L)}
+\[
+\hat{O} = \ket{1}\bra{1} - \ket{2}\bra{2}
+\]
+
+\section*{Problem 2.6 (X)}
+An Hermitian operator is defined as an operator which is equal to its Hermitian conjugate, meaning $\hat{L} = \hat{L}^{†}$. Hermitian operators have real eigenvalues. This is a good attribute for an operator which represent an observable, as the we only measure real values during experiments.
+\paragraph{Proof of Real Eigenvalues: }
+
+\[
+\mathbf{L}\ket{λ} = λ\ket{λ}
+\]
+\[
+\bra{λ}\mathbf{L}^{†} = \bra{λ}λ^*
+\]
+Multiplying the first equation with $\bra{λ}$ and the second with $\ket{λ}$
+\[
+\bra{λ}\mathbf{L}\ket{λ} = λ \bra{λ}\ket{λ}
+\]
+\[
+\bra{λ}\mathbf{L}^{†}\ket{λ} = λ* \bra{λ}\ket{λ}
+\]
+As $\mathbf{L} = \mathbf{L}^{†}$, it follows that $λ = λ^*$ and it must therefore be real
+
+\section*{Problem 2.7 (X)}
+\[
+\hat{O} = \hat{A} \hat{B}
+\]
+\[
+\hat{A} \hat{B} = A_{ij} B_{i'j'} = AB
+\]
+We begin with a simple case of both $\hat{A}$ and $\hat{B}$ being $2×2$ matrices. 
+\[
+\hat{O} = \hat{A} \hat{B} = 
+\begin{bmatrix} 
+    A_{11} & A_{12} \\
+    A_{21} & A_{22} \\ 
+\end{bmatrix} 
+\begin{bmatrix} 
+    B_{11} & B_{12} \\
+    B_{21} & B_{22} \\
+\end{bmatrix} = 
+\begin{bmatrix*}[r]
+ A_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\
+ A_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22} \\
+\end{bmatrix*}
+\]
+Lets check if the following equation holds. 
+\[
+\hat{O}^{†} \overset{\underset{\mathrm{?}}{}}{=} \hat{B}^{†} \hat{A}^{†}
+\]
+
+\subsection*{Sol. 1}
+We first examine the left side
+\[
+\hat{O}^{†} = 
+\begin{bmatrix*}[r]
+A_{11}^{*}B_{11}^{*} + A_{12}^{*}B_{21}^{*} & A_{21}^{*}B_{11}^{*} + A_{22}^{*}B_{21}^{*} \\
+A_{11}^{*}B_{12}^{*} + A_{12}^{*}B_{22}^{*} & A_{21}^{*}B_{12}^{*} + A_{22}^{*}B_{22}^{*} \\
+\end{bmatrix*}
+\]
+Now the right side
+\[
+\hat{A}^{†} \hat{B}^{†} = 
+\begin{bmatrix} 
+A_{11} & A_{12} \\
+A_{21} & A_{22} \\ 
+\end{bmatrix}^{†}
+\begin{bmatrix} 
+B_{11} & B_{12} \\
+B_{21} & B_{22} \\
+\end{bmatrix}^{†} =
+\begin{bmatrix} 
+A_{11}^{*} & A_{21}^{*} \\
+A_{12}^{*} & A_{22}^{*} \\
+\end{bmatrix}
+\begin{bmatrix*}[r]
+B_{11}^{*} & B_{21}^{*} \\
+B_{12}^{*} & B_{22}^{*} \\
+\end{bmatrix*} 
+\]
+\[
+\begin{bmatrix} 
+A_{11}^{*} & A_{21}^{*} \\
+A_{12}^{*} & A_{22}^{*} \\
+\end{bmatrix}
+\begin{bmatrix*}[r]
+B_{11}^{*} & B_{21}^{*} \\
+B_{12}^{*} & B_{22}^{*} \\
+\end{bmatrix*} = 
+\begin{bmatrix*}[r]
+A_{11}^{*}B_{11}^{*} + A_{12}^{*}B_{21}^{*} & A_{21}^{*}B_{11}^{*} + A_{22}^{*}B_{21}^{*} \\
+A_{11}^{*}B_{12}^{*} + A_{12}^{*}B_{22}^{*} & A_{21}^{*}B_{12}^{*} + A_{22}^{*}B_{22}^{*} \\
+\end{bmatrix*}
+\]
+We can clearly see that
+\[
+\hat{O}^{†} = \hat{A}^{†} \hat{B}^{†}
+\]
+And how this generalizes to any $n×n$ matrix.
+
+\subsection*{Sol. 2}
+Each element in $\hat{O}$ can be written as
+\[
+O_{ij} = ∑_{k}^{N} A_{ik} B_{kj}
+\]
+We can then take the Hermitian conjugate as we know how it operates on numbers. 
+\[
+O_{ij}^{†} = ∑_{k}^{N} \left(A_{ik} B_{kj}\right)^{†}
+\]
+\[
+O_{ji}^{*} = ∑_{k}^{N} B_{jk}^{*} A_{ki}^{*}
+\]
+Therefore we know that $\hat{O}^{†} = \hat{A}^{†} \hat{B}^{†}$.
+
+
+
+\section*{Problem 2.8 (X)}
+To find the Hermitian conjugate of an operator we must find an operator $K^{†}$ which satisfies the following:
+\[
+\bra{u}K\ket{v} = \bra{v}K^{†}\ket{u}
+\]
+Where $u$ and $v$ can be represented as functions $u(x)$ and $v(X)$. 
+\[
+\bra{u}K\ket{v} = ∫_{-∞}^{∞} u^{*}(x) x \frac{\mathrm{d}}{\mathrm{d}x} v(x) \ \mathrm{d}x
+\]
+We use integration by parts. 
+\paragraph{Definition:}
+\[
+u = u^{*}(x)x \quad , \quad v' = \frac{\mathrm{d}}{\mathrm{d}x} v(x)
+\]
+\[
+u' = x \frac{\mathrm{d}}{\mathrm{d}x} u^{*}(x) + u^{*}(x) \quad , \quad v = v(x)
+\]
+
+\[
+\underbrace{u^{*}(x)\ x\ v(x) \Big|_{-∞}^{∞}}_{0} - ∫_{-∞}^{∞} \frac{\mathrm{d}}{\mathrm{d}x} (u^{*}(x)x) v(x) \ \mathrm{d}x 
+\]
+\[
+- ∫_{-∞}^{∞} \left(\frac{\mathrm{d}}{\mathrm{d}x}u^{*}(x)x + u^{*}(x)\right)v(x) \ \mathrm{d}x
+\]
+\[
+- ∫_{-∞}^{∞} \left(\frac{\mathrm{d}}{\mathrm{d}x}u^{*}(x)\left(x + 1\right)\right) v(x) \ \mathrm{d}x
+\]
+\[
+- ∫_{-∞}^{∞} \left(x \frac{\mathrm{d}}{\mathrm{d}x}u^{*}(x) + \frac{\mathrm{d}}{\mathrm{d}x}u^{*}(x)\right)v(x) \ \mathrm{d}x
+\]
+
+\[
+\underline{\underline{K^{†} = - x \frac{\mathrm{d}}{\mathrm{d}x} -1}}
+\]
+
+
+\section*{Problem 2.9 (E)}
+\subsection*{a)}
+By definition we know $ \bra{ψ} = \ket{ψ}^{†}$. 
+\[
+∴ \bra{ψ} = c^{*}\left(\sqrt{3} \bra{0} - i \bra{1}\right)
+\]
+To normalize this we must find $c$ such that $\bra{ψ}\ket{ψ} = 1$.
+\[
+\bra{ψ}\ket{ψ} = c^2 \left(3 \bra{0}\ket{0} - \bra{1}\ket{1}\right) = 1
+\]
+\[
+2c^2 = 1 \quad , \quad c = \frac{1}{\sqrt{2}}
+\]
+The normalized $\ket{ψ}$ becomes
+\[
+\underline{\underline{\ket{ψ} = \frac{1}{\sqrt{2}}\left(\sqrt{3} \ket{0} + i \ket{1}\right)}}
+\]
+\subsection*{b)}
+\[
+\underline{\underline{\ket{ψ} ≃ 
+\begin{pmatrix*}[r]
+\sqrt{\frac{3}{2}} \\  
+ \frac{i}{\sqrt{2}} \\  
+\end{pmatrix*}}}
+\]
+\[
+\hat{A} \ket{0} = -i \ket{1}
+\]
+\[
+\begin{pmatrix*}[r]
+ A_{11} & A_{12} \\
+ A_{21} & A_{22} \\
+\end{pmatrix*}
+\begin{pmatrix*}[r]
+ 1 \\
+ 0 \\
+\end{pmatrix*} = 
+\begin{pmatrix*}[r]
+0 \\
+-i \\
+\end{pmatrix*}
+\]
+This gives two equations. 
+\[
+A_{11} + 0 ⋅  A_{12} = 0 → A_{11} = 0
+\]
+\[
+A_{21} + 0 ⋅ A_{22} = -i → A_{21} = -i
+\]
+\[
+\underline{\hat{A} ≃ 
+\begin{pmatrix*}[r]
+ 0 & A_{12} \\ 
+ -i & A_{22} \\ 
+\end{pmatrix*}}
+\]
+\[
+\hat{A} \ket{1} =  i\ket{0}
+\]
+\[
+\begin{pmatrix*}[r]
+0 & A_{12} \\
+-i & A_{22} \\
+\end{pmatrix*}
+\begin{pmatrix*}[r]
+0 \\
+1 \\
+\end{pmatrix*} = 
+\begin{pmatrix*}[r]
+i \\
+0 \\
+\end{pmatrix*}
+\]
+Again, two new equations. 
+\[
+A_{12} = i
+\]
+\[
+A_{22} = 0
+\]
+\[
+\underline{\underline{\hat{A} ≃ 
+\begin{pmatrix*}[r]
+ 0 & i \\ 
+ -i & 0 \\
+\end{pmatrix*}}}
+\]
+
+\subsection*{c)}
+\[
+\bra{ψ}\hat{A}\ket{ψ} = \frac{1}{2} 
+\begin{pmatrix*}[r]
+ \sqrt{3} & -i \\
+\end{pmatrix*}
+\begin{pmatrix*}[r]
+ 0 & i \\ 
+ -i & 0 \\
+\end{pmatrix*}
+\begin{pmatrix*}[r]
+ \sqrt{3} \\ 
+ i \\
+\end{pmatrix*}
+\]
+\[
+\begin{pmatrix*}[r]
+\sqrt{3} & -i \\
+\end{pmatrix*}
+\begin{pmatrix*}[r]
+-1 \\ 
+-i\sqrt{3} \\
+\end{pmatrix*} = \underline{\underline{- 2\sqrt{3}}}
+\]
+\newline 
+\[
+\bra{ψ}\hat{A}\ket{ψ} = \left(\sqrt{3} \bra{0} - i \bra{1}\right) \hat{A} \left(\sqrt{3} \ket{0} + i\ket{1}\right)
+\]
+\[
+\left(\sqrt{3} \bra{0} - i \bra{1}\right) \left(-i\sqrt{3}\ket{1} -\ket{0}\right)
+\]
+\[
+- \sqrt{3} \bra{0}\ket{0} + ii \sqrt{3}\bra{1}\ket{1}
+\]
+\[
+\underline{\underline{-2\sqrt{3}}}
+\]
+
+
+\section*{Problem 2.10 (E)}
+\[
+U = 
+\begin{pmatrix*}[r]
+ a & b \\
+ c & d \\
+\end{pmatrix*}
+\]
+\subsection*{a)}
+\[
+    U^{T} = 
+\begin{pmatrix*}[r]
+ a & c \\
+ b & d \\
+\end{pmatrix*}
+\]
+\[
+    U^{†} = 
+    \begin{pmatrix*}[r]
+        a^{*} & c^{*} \\
+ b^{*} & d^{*} \\
+\end{pmatrix*}
+\]
+
+\subsection*{b)}
+To be Hermitian, $U$ must be equal to its Hermitian conjugate.
+\[
+    U = U^{†}
+    \]
+    \[
+        \begin{pmatrix*}[r]
+a & b \\
+c & d \\
+\end{pmatrix*} = 
+\begin{pmatrix*}[r]
+a^{*} & c^{*} \\
+b^{*} & d^{*} \\
+\end{pmatrix*}
+\]
+Both $a$ and $d$ must be real, and $b = c^{*}$. 
+
+\subsection*{c)}
+We assume that $U$ has an eigenvector $\ket{u}$. 
+\[
+    U\ket{u} = λ\ket{u} \quad , \quad \ket{u} = 
+\begin{pmatrix*}[r]
+ u_1 \\
+ u_2 \\
+\end{pmatrix*}
+\]
+\[
+\begin{pmatrix*}[r]
+    a & b \\
+ c & d \\
+\end{pmatrix*}
+\begin{pmatrix*}[r]
+ u_1 \\
+ u_2 \\
+\end{pmatrix*} = λ \begin{pmatrix*}[r]
+ u_1 \\
+ u_2 \\
+\end{pmatrix*}
+\]
+\[
+\begin{pmatrix*}[r]
+ au_1 + bu_2 \\
+ cu_1 + du_2 \\
+\end{pmatrix*} = λ 
+\begin{pmatrix*}[r]
+    u_1 \\
+    u_2 \\
+\end{pmatrix*}
+\]
+This gives us two equations 
+\[
+au_1 + bu_2 = λu_1
+\]
+\[
+cu_1 + du_2 = λu_2
+\]
+\[
+λ = \frac{au_1 + bu_2}{u_1} = \frac{cu_1 + du_2}{u_2}
+\]
+\[
+(au_1 + bu_2)u_2 = (cu_1 + du_2)u_1
+\]
+\[
+au_1u_2 + bu_2^2 - cu_1^2 - du_1u_2 = 0
+\]
+If this is to be true, and we take into account the demands on the elements of $U$ from b), we get the following:
+\[
+(au_1u_2 + bu_2^2 - cu_1^2 - du_1u_2) = (au_1u_2 + bu_2^2 - cu_1^2 - du_1u_2)^{*} = 0
+\]
+\[
+(au_1u_2 + bu_2^2 - cu_1^2 - du_1u_2) - (au_1^{*}u_2^{*} + b^{*}u_2^2 - c^{*}u_1^{2} - du_1^{*}u_2^{*}) = 0
+\]
+
+
+\section*{Problem 2.11 (H)}
+Both $\ket{ψ}$ and $\ket{ϕ}$ must both have real eigenvalues.  
 
 
 \end{document}

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.19)  4 SEP 2023 13:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.19)  29 AUG 2023 09:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/Oskar/GitHub/FYS3110-Quantum Mechanics/02_Problem_set/Problem_2.tex"
-(c:/Users/Oskar/GitHub/FYS3110-Quantum Mechanics/02_Problem_set/Problem_2.tex
+**"c:/Users/Oskar/GitHub/FYS3110-Quantum Mechanics/Lecture Notes/03LN/Lecture_03.tex"
+(c:/Users/Oskar/GitHub/FYS3110-Quantum Mechanics/Lecture Notes/03LN/Lecture_03.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-11>
 (c:/texlive/2023/texmf-dist/tex/latex/base/article.cls
@@ -664,6 +664,16 @@ Package zref Info: New property: mdf@pagevalue on input line 895.
 Package: relsize 2013/03/29 ver 4.1
 ) (c:/texlive/2023/texmf-dist/tex/latex/esdiff/esdiff.sty
 Package: esdiff 
+) (c:/texlive/2023/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
+Applying: [2015/01/01] Old fixltx2e package on input line 46.
+
+
+Package fixltx2e Warning: fixltx2e is not required with releases after 2015
+(fixltx2e)                All fixes are now in the LaTeX kernel.
+(fixltx2e)                See the latexrelease package for details.
+
+Already applied: [0000/00/00] Old fixltx2e package on input line 53.
 ) (c:/texlive/2023/texmf-dist/tex/latex/esint/esint.sty
 Package: esint 
 \symlargesymbolsA=\mathgroup4
@@ -857,8 +867,8 @@ Package babel Info: Importing font and identification data for norsk
 (babel)             from babel-no.ini. Reported on input line 11.
 ) (c:/texlive/2023/texmf-dist/tex/latex/cancel/cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
-) (out/Problem_2.aux)
-\openout1 = `Problem_2.aux'.
+) (out/Lecture_03.aux)
+\openout1 = `Lecture_03.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
 LaTeX Font Info:    ... okay on input line 64.
@@ -934,7 +944,9 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
+
+Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
+ on input line 64.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
@@ -943,9 +955,9 @@ Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count374
 Package hyperref Info: Link coloring OFF on input line 64.
-(out/Problem_2.out) (out/Problem_2.out)
+(out/Lecture_03.out) (out/Lecture_03.out)
 \@outlinefile=\write4
-\openout4 = `Problem_2.out'.
+\openout4 = `Lecture_03.out'.
 
 LaTeX Font Info:    Trying to load font information for U+esint on input line 66.
  (c:/texlive/2023/texmf-dist/tex/latex/esint/uesint.fd
@@ -960,42 +972,35 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (c:/texlive/2023/texmf-dist/tex/latex/ucs/data/uni-3.def
-File: uni-3.def 2022/08/07 UCS: Unicode data U+0300..U+03FF
+{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (c:/texlive/2023/texmf-dist/tex/latex/ucs/data/uni-32.def
+File: uni-32.def 2022/08/07 UCS: Unicode data U+2000..U+20FF
+) (c:/texlive/2023/texmf-dist/tex/latex/ucs/data/uni-33.def
+File: uni-33.def 2022/08/07 UCS: Unicode data U+2100..U+21FF
 ) (c:/texlive/2023/texmf-dist/tex/latex/ucs/data/uni-34.def
 File: uni-34.def 2022/08/07 UCS: Unicode data U+2200..U+22FF
-) (c:/texlive/2023/texmf-dist/tex/latex/ucs/data/uni-32.def
-File: uni-32.def 2022/08/07 UCS: Unicode data U+2000..U+20FF
-) [2] (c:/texlive/2023/texmf-dist/tex/latex/ucs/data/uni-0.def
-File: uni-0.def 2022/08/07 UCS: Unicode data U+0000..U+00FF
-) [3] [4] (c:/texlive/2023/texmf-dist/tex/latex/ucs/data/uni-33.def
-File: uni-33.def 2022/08/07 UCS: Unicode data U+2100..U+21FF
-) [5]
-Underfull \hbox (badness 10000) in paragraph at lines 444--446
-
- []
-
-[6] [7] (out/Problem_2.aux)
+) (c:/texlive/2023/texmf-dist/tex/latex/ucs/data/uni-3.def
+File: uni-3.def 2022/08/07 UCS: Unicode data U+0300..U+03FF
+) [2{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [3] (out/Lecture_03.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-11>
  ***********
-Package rerunfilecheck Info: File `Problem_2.out' has not changed.
+Package rerunfilecheck Info: File `Lecture_03.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 43119 strings out of 475189
- 938682 string characters out of 5767835
- 1950248 words of memory out of 5000000
- 63700 multiletter control sequences out of 15000+600000
- 566953 words of font info for 75 fonts, out of 8000000 for 9000
+ 42637 strings out of 475189
+ 934030 string characters out of 5767835
+ 1931248 words of memory out of 5000000
+ 63229 multiletter control sequences out of 15000+600000
+ 566669 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,101p,795b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on out/Problem_2.pdf (7 pages, 164920 bytes).
+ 99i,9n,101p,802b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on out/Lecture_03.pdf (3 pages, 153290 bytes).
 PDF statistics:
- 138 PDF objects out of 1000 (max. 8388607)
- 100 compressed objects within 1 object stream
- 29 named destinations out of 1000 (max. 500000)
+ 117 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
+ 18 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
