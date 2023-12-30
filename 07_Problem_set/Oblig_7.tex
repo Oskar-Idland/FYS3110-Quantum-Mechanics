@@ -75,6 +75,7 @@ We therefore know that:
 \[
 \vec{L} ⋅ \vec{S} = \frac{1}{2}(\vec{J}^2 - \vec{L}^2 - \vec{S}^2)
 \]
+The eigenvalues will then have the same values
 We begin with $S^2$
 \[
 S^2 = ℏ^2 s(s+1)  = ℏ^2 \frac{3}{4}
@@ -95,23 +96,160 @@ J_1^2 = ℏ^2 j_1(j_1+1) = ℏ^2 \frac{35}{4}
 \[
 J_2^2 = ℏ^2 j_2(j_2+1) = ℏ^2 \frac{15}{4}
 \]
-Then we compute the dot product for $j_1$:
+Then we compute the eigenvalues of the dot product for $j_1$:
 \[
-\mathbf{L} ⋅ \mathbf{S} = \frac{1}{2} \left(ℏ^2 \frac{35}{4} - 6ℏ^2 -  \frac{3}{4}ℏ^2\right) = ℏ^2
+\operatorname{eig} \left(\mathbf{L} ⋅ \mathbf{S}\right) = \frac{1}{2} \left(ℏ^2 \frac{35}{4} - 6ℏ^2 -  \frac{3}{4}ℏ^2\right) = ℏ^2
 \]
 And for $j_2$:
 \[
-    \mathbf{L} ⋅ \mathbf{S} = \frac{1}{2} \left(ℏ^2 \frac{15}{4} - 6ℏ^2 -  \frac{3}{4}ℏ^2\right) = - ℏ^2 \frac{3}{2}
+\operatorname{eig} \left(\mathbf{L} ⋅ \mathbf{S}\right) = \frac{1}{2} \left(ℏ^2 \frac{15}{4} - 6ℏ^2 -  \frac{3}{4}ℏ^2\right) = - ℏ^2 \frac{3}{2}
 \]
 Therefore we know:
 \[
-\hat{H}_{so_{j = 5 / 2}} = λ \quad , \quad \hat{H}_{so_{j = 3 / 2}} = - \frac{3}{2} λ
+E_{so_{j = 5 / 2}} = λ \quad , \quad E_{so_{j = 3 / 2}} = - \frac{3}{2} λ
 \]
 The full Hamiltonian is then dependent on the $j$-value:
 \[
-\hat{H}_j = \hat{H}_0 + \hat{H}_{so_j} 
+E_j = E_3 + E_{so_j} 
 \]
+Adding in the energy eigenvalues we get:
+\[
+E_j = \frac{E_1}{3^2} + E_{so_j}
+\]
+Where 
+
+
 There are two possible values for the $m_s$, and five possible values for $m_l$. If $j = 3 / 2$ then there are  $2j + 1 = 4$ possible values for $m_j$ meaning a total degeneracy of 40. If $j = 5 / 2$ there are $2j + 1 = 6$ possible values giving a total degeneracy of 60.
 
+\subsection*{b)}
+We know $n=3$ and $l=2$. From our previous calculations we know that the lowest energy has $j = 3 / 2$ and $m_j = +1 / 2$. With $l = 2$. As we want to go from describing our state in terms of the total angular momentum to the orbital and spin angular momentum we use the Clebsch-Gordan coefficients for angular momentum 2 and spin 1/2. We therefore have:
+
+\[
+\ket{3 / 2,\  +1 / 2} =  \sqrt{\frac{3}{5}} \ket{1,\ -1 / 2} - \sqrt{\frac{2}{5}} \ket{0,\ +1 / 2}
+\]
+The probability of measuring $m_s = ℏ / 2 $ is therefore $2 / 5$. 
+
+\subsection*{c)}    
+The $\hat{J}_z$ operator has eigenvalues of $ℏm_j$, which in turn gives $\hat{H}_b$ eigenvalues of $-bm_j$ We therefore get further splitting in terms of energy, where we get $2j+1$ values of $m_j$. In our case that gives us 4 values for $j = 3 / 2$ and 6 values for $j = 5 / 2$. 
+
+\subsection*{d)}
+We already know the lowest energy belongs to $j = 3 / 2$. As the newly added term has a negative sign, we know the lowest possible energy comes from the only two positive values $m_j = 1 / 2$ and $m_j = 3 / 2$
+
+\section*{7.7 (H)}
+To have a fully symmetric system as the bosons are identical, we must have both symmetric or antisymmetric spatial and spin part. We find the states which satisfy this using the Clebsch-Gordan coefficients. We look at the cases where the total spin is either  0 or 2. Starting at the upper left of the table we get:
+\paragraph{$J = 2$}
+\[
+\ket{j=2, m=2} = \ket{1,1}
+\]
+\[
+\ket{j=2, m=1} = \frac{1}{\sqrt{2}} \ket{0,1} + \frac{1}{\sqrt{2}} \ket{1,0}
+\]
+\[
+\ket{j=2, m=0} = \frac{1}{\sqrt{6}}\ket{1,-1} + \sqrt{\frac{2}{3}}\ket{0,0} + \frac{1}{\sqrt{6}}\ket{-1,1}
+\]
+\[
+\ket{j=2, m=-1} = \frac{1}{\sqrt{2}}\ket{0,-1} + \frac{1}{\sqrt{2}}\ket{-1,0}
+\]
+\[
+\ket{j=2, m=-2} = \ket{-1,-1}
+\]
+
+\paragraph{$J = 1$}
+\[
+\ket{1,1} = \frac{1}{\sqrt{2}} \ket{0,1} - \frac{1}{\sqrt{2}} \ket{1,0}
+\]
+\[
+\ket{1,0} = \frac{1}{\sqrt{2}} \ket{1,-1} - \frac{1}{\sqrt{2}} \ket{-1,1}
+\]
+\[
+\ket{1,-1} = \frac{1}{\sqrt{2}} \ket{0,-1} - \frac{1}{\sqrt{2}} \ket{-1,0}
+\]
+
+\paragraph{$J = 0$}
+\[
+\ket{j=0, m=0} = \frac{1}{\sqrt{3}} \ket{1,1} - \frac{1}{\sqrt{3}} \ket{0,0} + \frac{1}{\sqrt{3}} \ket{-1,1}
+\]
+
+\section*{7.8 (X)}
+The way to check if an operator is time-independent or not, is to see if it commutes with the time-independent Hamiltonian. 
+\[
+\left[\hat{H}, S^{z}_1\right]
+\]
+Expanding the coefficients and taking out some factors we get the following:
+\[
+ \frac{J}{ℏ}i \Big(-S_{1}^{y} S_{2}^{x} + S_{1}^{x} S_{2}^{y}\Big) ≠ 0
+\]
+
+\[
+\left[\hat{H}, S^{z}_{1}\right] = \frac{J}{ℏ}i \Big(S_{1}^{y} S_{2}^{x} - S_{1}^{x} S_{2}^{y}\Big) ≠ 0
+\]
+Neither operator commutes, but as they only differ by a sign, we know that $\left(S_1^{z} + S_2^{z}\right)$ must equal zero. Naturally we also know that $\left(S_1^{z} - S_2^{z}\right)$ can't be zero and is therefore also time-dependent. In conclusion: \underline{Only $G_3$ is time-independent}. 
+
+
+\section*{7.9 (X)}
+\subsection*{a)}
+We use the basis of position 1 being $(1,0,0)$, position 2 being $(0,1,0)$ and position 3 being $(0,0,1)$. We then have the following Hamiltonian:
+\[
+H ≃ -g
+\begin{pmatrix*}[r]
+ 0 & 1 & 1 \\
+ 1 & 0 & 1 \\
+ 1 & 1 & 0 \\
+\end{pmatrix*}
+\]
+
+\subsection*{b)}
+To be Hermtian we check the following:
+\[
+R = R^{†}  
+\]
+\[
+\ket{2}\bra{1} + \ket{3}\bra{2} + \ket{1}\bra{3} ≠  \ket{1}\bra{2} + \ket{2}\bra{3} + \ket{3}\bra{1}
+\]
+To see if it is unitary we check the following:
+\[
+R^{†} = R^{-1}
+\]
+This is easy if we do the following:
+\[
+RR^{†} = I
+\]
+\[
+\Big(\ket{2}\bra{1} + \ket{3}\bra{2} + \ket{1}\bra{3}\Big) \Big(\ket{1}\bra{2} + \ket{2}\bra{3} + \ket{3}\bra{1}\Big)
+\]
+\[
+\ket{2}\bra{2} + \ket{3}\bra{3} + \ket{1}\bra{1} = I
+\]
+Therefore we know that $R$ is unitary. To check for a symmetric transformation we check if it commutes with the Hamiltonian. Looking at its definition we see that it is $-g(R + R^{†})$. 
+\[
+\left[H, R\right] = -g \left[R + R^{†}, R\right] 
+\]
+As $R$ obviously commutes with itself we get:
+\[
+-g \Big(R^{†}R - R R^{†}\Big) = 0
+\]
+Therefore we know that $R$ is a symmetric transformation.
+
+\subsection*{c)}
+\[
+R R = \Big(\ket{2}\bra{1} + \ket{3}\bra{2} + \ket{1}\bra{3}\Big) \Big(\ket{2}\bra{1} + \ket{3}\bra{2} + \ket{1}\bra{3}\Big) = \ket{2}\bra{3} + \ket{3}\bra{1} + \ket{1}\bra{2}
+\]
+\[
+R^2 R = \Big(\ket{2}\bra{3} + \ket{3}\bra{1} + \ket{1}\bra{2}\Big) \Big(\ket{2}\bra{1} + \ket{3}\bra{2} + \ket{1}\bra{3}\Big) 
+\]
+\[
+\ket{2}\bra{2} + \ket{3}\bra{3} + \ket{1}\bra{1} = I
+\]
+If $R^3 = I$, and $R$ has an eigenvalue $λ_R$ and $I$ has eigenvectors $λ_I = 1$, then we know that $λ_R^3 = 1$. Which means $λ_R =  \sqrt[3]{1} = 1$. We know $R$ is not Hermitian which opens the door for complex values. We know that $e^{i 2πn} = 1$. Therefore, we know that $R$ has eigenvalues $λ_R = e^{i 2πn / 3}$ where $n = 0, 1, 2$. 
+
+\subsection*{d)}
+Using the time evolution operator we get:
+\[
+e^{iHt / ℏ} = e^{-ig(R + R^{†})t / ℏ}
+\]
+\[
+\ket{ψ(t)} = e^{-ig(R + R^{†})t / ℏ} \ket{ψ(0)} 
+\]
+Can' really do more as I don't have a proper state.
 
 \end{document}

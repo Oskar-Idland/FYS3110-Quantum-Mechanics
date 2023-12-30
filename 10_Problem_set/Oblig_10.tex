@@ -1,0 +1,223 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{enumerate}
+\newtheorem{theorem}{Theorem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\setlength{\parindent}{0cm}
+\usepackage{graphics}
+\usepackage{graphicx} % Required for including images
+\usepackage{subcaption}
+\usepackage{bigintcalc}
+\usepackage{pythonhighlight} %for pythonkode \begin{python}   \end{python}
+\usepackage{appendix}
+\usepackage{arydshln}
+\usepackage{physics}
+\usepackage{booktabs} 
+\usepackage{adjustbox}
+\usepackage{mdframed}
+\usepackage{relsize}
+\usepackage{physics}
+\usepackage[thinc]{esdiff}
+\usepackage{esint}  %for lukket-linje-integral
+\usepackage{xfrac} %for sfrac
+\usepackage{hyperref} %for linker, må ha med hypersetup
+\usepackage[noabbrev, nameinlink]{cleveref} % to be loaded after hyperref
+\usepackage{amssymb} %\mathbb{R} for reelle tall, \mathcal{B} for "matte"-font
+\usepackage{listings} %for kode/lstlisting
+\usepackage{verbatim}
+\usepackage{graphicx,wrapfig,lipsum,caption} %for wrapping av bilder
+\usepackage{mathtools} %for \abs{x}
+\usepackage[norsk]{babel}
+\usepackage{cancel}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2 
+}
+
+\lstset{style=mystyle}
+\author{Oskar Idland}
+\title{Oblig 10}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+\section*{Problem 10.3 (H)}
+The eigenstates and eigenvalues of the Hamiltonian of the ground state of the Hydrogen atom is already known to be the following:
+\[
+E_n = - \frac{E_0}{n^2} \quad , \quad E_0 = 13.6 \text{ eV}
+\]
+\[
+\ket{ψ_r} = \frac{1}{\sqrt{π}a_0^{3/2}} e^{-r/a_0}
+\]
+where $a_0$ is the Bohr radius. We find the first order correction through perturbation
+
+\[
+E_0^1 = \bra{ψ}V(r)\ket{ψ} = \frac{1}{πa_0^3} \int_0^b e^{-2r/a_0} \left(\frac{e}{4πϵ_0b}\left(\frac{3}{2} - \frac{r^2}{2b^2}\right)\right) dr 
+\]
+where $b$ is the radius of the proton. 
+\[
+\frac{e}{4π^2ϵ_0 ba_0^3} ∫_{0}^{b} e^{-2r / a_0} \left(\frac{3}{2} - \frac{r^2}{2b^2}\right) \ \mathrm{d}r
+\]
+This can be split into two separate integrals:
+\[
+\frac{e}{4π^2ϵ_0 ba_0^3} \left(\frac{3}{2} ∫_{0}^{b} e^{-2r / a_0} \ \mathrm{d}r - \frac{1}{2b^2} ∫_{0}^{b} r^2 e^{-2r / a_0} \ \mathrm{d}r\right)
+\]
+Solving both we get:
+\[
+E_0^{1} = \frac{e}{4πϵ_0ba_0^3} \left(\left(-\frac{3}{4} a_0 e^{-2b / a_0} + \frac{3}{4}a_0\right) + \left(\frac{a_0^{3} \; \textit{e}^{2 b / a_0} - a_0^{3} - 2 \; a_0 \; b^{2} - 2 \; a_0^{2} \; b}{8 \; b^{2} \; \textit{e}^{2 b / a_0}}\right)\right)
+\]
+Factoring out the Bohr radius we get:
+\[
+\underline{\underline{E_{0}^{1} = \frac{e}{4πϵ_0ba_0^2} \left(\frac{3}{4}\left(1 - e^{-2b / a_0}\right)\right) + \left(\frac{a_0^2 e^{2b / a_0} - a_0^2 - 2b^2 - 2a_0}{8be^{2b / a_0}}\right)}}
+\]
+
+If all the charge of the proton was at its surface, then the potential would be constant inside the proton. This means that the integral would just be some constant times the wavefunction instead of being dependent on $r$. This constant would be the same as the potential at the surface of the uniform charged sphere meaning $r = b$ which lets us redefine the potential:
+\[
+V(r) = \begin{cases}
+  \frac{e}{4πϵ_0b} &\text{ if }r ≤ b\\
+  \frac{e}{4πϵ_0r} &\text{ if }r > b
+\end{cases}
+\]
+This alternative potential would, when integrated yields a larger energy correction as we have the same equation as the original but the negative term at its highest value throughout the integral. 
+
+\newpage
+\section*{Problem 10.4 (H)}
+\subsection*{a)}
+The ground state will have the lowest energy, and must therefore be the state:
+\[
+\ket{0,0} = \ket{0} ⊗ \ket{0} 
+\]
+with an energy $E_{0,0} = ℏω$ and a degeneracy of 1. The states corresponding to the next lowest energy levels are:
+\[
+\ket{1,0} = \ket{1} ⊗ \ket{0} \quad , \quad \ket{0,1} = \ket{0} ⊗ \ket{1}
+\]
+with an energy $E_{1,0} = E_{0,1} = 2ℏω$ and a degeneracy of 2. 
+
+\subsection*{b)}
+When adding the term from pertubation we get an additional Hamiltonian:
+\[
+\hat{H}' = g x y
+\]
+The first order correction term is given by:
+\[
+E_0' = \bra{0,0}\hat{H}'\ket{0,0} 
+\]
+We can use the fact as in written in Berera eq. 6.29 and 6.30 to rewrite the position operators in terms of the ladder operators:
+\[
+\hat{a}_x = \sqrt{\frac{mω}{2ℏ}}\hat{x} + i \sqrt{\frac{1}{2mωℏ}}\hat{p}_x
+\]
+\[
+\hat{a}_x^{†} = \sqrt{\frac{mω}{2ℏ}}\hat{x} - i \sqrt{\frac{1}{2mωℏ}}\hat{p}_x
+\]
+Which means that
+\[
+\hat{x} = \sqrt{\frac{ℏ}{2mω}}\left(\hat{a}_x + \hat{a}_x^{†}\right)
+\]
+With the same for $\hat{y}$:
+\[
+\hat{y} = \sqrt{\frac{ℏ}{2mω}}\left(\hat{a}_y + \hat{a}_y^{†}\right)
+\]
+We can now rewrite the Hamiltonian as:
+\[
+\hat{H}' = g \frac{ℏ}{2mω} \left(\hat{a}_x + \hat{a}_x^{†}\right) \left(\hat{a}_y + \hat{a}_y^{†}\right)
+\]
+We can now calculate the first order correction term:
+\[
+E_0' = g \frac{ℏ}{2mω} \bra{0,0} \left(\hat{a}_x + \hat{a}_x^{†}\right) \left(\hat{a}_y + \hat{a}_y^{†}\right) \ket{0,0}
+\]
+As we are already in the ground state, applying the lowering operator yields 0 thus:
+\[
+E'_0 = g \frac{ℏ}{2mω} ⋅  0 = 0
+\]
+
+\subsection*{c)}
+The first excited states are the two next-lowest states $\ket{1,0}$ and $\ket{0,1}$. We can calculate the first order correction to these states as follows:
+\[
+E_{1,0}' = g \frac{ℏ}{2mω} \bra{1,0} \left(\hat{a}_x + \hat{a}_x^{†}\right) \left(\hat{a}_y + \hat{a}_y^{†}\right) \ket{1,0}
+\]
+Here we get the same issue as in the previous problem. The lowering operator will yield 0, and we are left with:
+\[
+E_{1,0}' = E_{0,1}' = 0
+\]
+
+\subsection*{d)}
+The operators $\hat{x}$ and $\hat{y}$ commute, and it therefore makes no difference if we switch the order of the operators, or the order of the kets they are acting on. This means that the same states as will yield the same energy. The first excited states are still $\ket{1,0}$ and $\ket{0,1}$. 
+
+\subsection*{e)}
+We will get the same answer as in $c)$ as the ladder operators also commute for different axis, meaning $\left[\hat{x}, \hat{y}\right] = \left[(\hat{a}_x + \hat{a}_x^{†}), (\hat{a}_y + \hat{a}^{†}_y)\right] = 0$. 
+
+
+
+\newpage
+\section*{Problem 10.5 (X)}
+\subsection*{a)}
+When $g = 0$ we have the following Hamiltonian:
+\[
+H = - \ket{1}\bra{1} + \ket{3}\bra{3} 
+\]
+Acting on the eigenstates $\ket{1}, \ket{2}, \ket{3}$ we get eigenvalues of $-1, 0, 1$ respectively. 
+
+
+\subsection*{b)}
+The added Hamiltonian from the perturbation is:
+\[
+H' = g \Big(\ket{1}\bra{2} + \ket{2}\bra{1}\Big) + 2g \Big(\ket{1}\bra{3} + \ket{3}\bra{1}\Big)
+\]
+Applying this to each eigenstate would not yield any new eigenstates, and we therefore do not have any degeneracy. We begin by calculating the first order correction to the first eigenstate:
+\[
+\ket{1'} = ∑_{n ≠ 1}^3 \frac{\bra{n}H'\ket{1}}{E_1 - E_n} \ket{n} = -g \left(\ket{2} + \ket{3}\right) 
+\]
+The ground state is therefore given by:
+\[
+\ket{ψ_0} = C \Big(\ket{1} - g \left(\ket{2} - g\ket{3}\right)\Big)
+\]
+We have to normalize the state, and we do this by calculating the norm of the state:
+\[
+\left|\ket{ψ_0}\right|^2 = \bra{ψ_0}\ket{ψ_0} = C^2 + C^2g^2 + C^2g^2 = 1
+\]
+\[
+C =  \frac{1}{\sqrt{1 + 2g^2}}
+\]
+Which gives the final state:
+\[
+\underline{\underline{\ket{ψ_0} = \frac{1}{\sqrt{1 + 2g^2}} \Big(\ket{1} - g \left(\ket{2} - g\ket{3}\right)\Big)}}
+\]
+
+\subsection*{c)}
+As we have already normalized the ground state, we find the upper bound as follows:
+
+\[
+E_{\text{max}} = \bra{ψ_0}H\ket{ψ_0} = \frac{1}{\sqrt{1 + 2g^2}} \bra{ψ_0} \Big(- \ket{1}  -g\ket{3}  -g^2\ket{1} + g\ket{2} -2g^2\ket{1} + 2g\ket{3}\Big)
+\]
+\[
+E_{\text{max}} = \frac{1}{1 + 2g^2} \Big(-1 + g^2 - g^2 - g^2 - 2g^2 - 2g^2\Big)
+\]
+\[
+\underline{\underline{E_{\text{max}} = -\frac{1 + 5g^2}{1 - 2g^2}}}
+\]
+
+
+\end{document}

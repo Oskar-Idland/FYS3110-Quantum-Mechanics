@@ -1,0 +1,214 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{enumerate}
+\newtheorem{theorem}{Theorem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\setlength{\parindent}{0cm}
+\usepackage{graphics}
+\usepackage{graphicx} % Required for including images
+\usepackage{subcaption}
+\usepackage{bigintcalc}
+\usepackage{pythonhighlight} %for pythonkode \begin{python}   \end{python}
+\usepackage{appendix}
+\usepackage{arydshln}
+\usepackage{physics}
+\usepackage{booktabs} 
+\usepackage{adjustbox}
+\usepackage{mdframed}
+\usepackage{relsize}
+\usepackage{physics}
+\usepackage[thinc]{esdiff}
+\usepackage{esint}  %for lukket-linje-integral
+\usepackage{xfrac} %for sfrac
+\usepackage{hyperref} %for linker, må ha med hypersetup
+\usepackage[noabbrev, nameinlink]{cleveref} % to be loaded after hyperref
+\usepackage{amssymb} %\mathbb{R} for reelle tall, \mathcal{B} for "matte"-font
+\usepackage{listings} %for kode/lstlisting
+\usepackage{verbatim}
+\usepackage{graphicx,wrapfig,lipsum,caption} %for wrapping av bilder
+\usepackage{mathtools} %for \abs{x}
+\usepackage[english]{babel}
+\usepackage{cancel}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\author{Oskar Idland}
+\title{Lecture 14}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+
+\part{Atomic Structure}
+Looking at an atom with $Z$ protons and $N$ neutrons, we have the following Hamiltonian:
+\[
+H = ∑_{i=1}^{N} \left(\underbrace{\frac{\vec{p}^2_{i}}{2m}}_{\text{kinetic energy}} - \underbrace{\frac{Ze^2}{4πε_0\left|\vec{r}_i\right|}}_{e-\text{ nucleus attraction}}\right) + ∑_{\overset{i,j}{i≠j}}^{} \underbrace{\frac{1}{2} \frac{e^2}{4πε_0\left|\vec{r}_i - \vec{r}_j\right|}}_{e-e \text{ repulsion}}
+\]
+\section*{0 Approximation}
+To simplify this we will ignore the electron-electron interaction (just because it is hard. You need a computer). 
+
+A hydrogen-like energy eigenstate of $H_0$ is:
+\[
+\ket{ψ_n} = \ket{n_1,l_1,m_1} ⊗ \ket{n_2, l_2, m_2} ⊗ \cdots   \ket{n_n, l_n, m_n} ⊗ \ket{m_{s_{1}}} ⊗ \ket{m_{s_{2}}} ⊗ \cdots ⊗ \ket{m_{s_{n}}}
+\] 
+
+\[
+H_0 \ket{ψ_{N}} ∑_{i=1}^{N}  \frac{\left(-13 \text{ eV}\right)Z^2}{n_i^2}
+\]
+As $n_i^2$ increases, we get an absolute lower energy. To find the lowest energieigenvalues we must focus on the lower $n$ values.  As electrons are fermions, the state needs to be antisymmetric under permutation of particle labels. 
+\[
+\ket{ψ_2} = \ket{n_1, l_1, m_1} ⊗ \ket{n_2, l_2, m_2} ⊗ \ket{m_{s_{1}}} ⊗ \ket{m_{s_{2}}} - \ket{n_2, l_2, m_2} ⊗ \ket{n_1, l_1, m_1} ⊗ \ket{m_{s_{2}}} ⊗ \ket{m_{s_{1}}}
+\]
+We want the ground state to be as small (negative) as possible. 
+\[
+\ket{ψ_2} = \ket{1,0,0} ⊗ \ket{1,0,0} \Big(\ket{m_{s_1}} ⊗ \ket{m_{s_2}} - \ket{m_{s_2}} ⊗ \ket{m_{s_1}}\Big)
+\]
+and so $m_{s_1} ≠  m_{s_2}$ for this to not be $\ket{NULL}$ aka the singlet state. 
+\[
+\ket{ψ_3} = \ket{1,0,0} ⊗ \ket{1,0,0} ⊗ \ket{1,0,0} ⊗ \ket{x_3}
+\]
+\[
+\ket{x_3} = \ket{m_{s_1}} ⊗ \ket{m_{s_2}} ⊗ \ket{m_{s_3}} - \ket{m_{s_2}} ⊗ \ket{m_{s_1}} ⊗ \ket{m_{s_3}} ⊗ \ket{m_{s_3}} + \ket{m_{s_2}} ⊗ \ket{m_{s_3}} ⊗ \ket{m_{s_1}}
+\]
+\[
+- \ket{m_{s_1}} ⊗  \ket{m_{s_3}} ⊗ \ket{m_{s_2}} + \ket{m_{s_3}} ⊗ \ket{m_{s_1}} ⊗ \ket{m_{s_2}} - \ket{m_{s_3}} ⊗ \ket{m_{s_2}} ⊗ \ket{m_{s_1}} 
+\]
+No matter what spin we choose, we will always get $\ket{NULL}$. This is the Pauli exclusion principle. For $N=3$ we need $n=2$. When we do this, we must take into account the possible $l$ and $m$ values. We have the sates $\ket{2,1, \pm 1}, \ket{2,1,0}, \ket{2,0,0}$. With four states we can have 8 electrons. For each level $n$ we have 
+\[
+2 ∑_{l=0}^{n-1} (2l+1) = 2n^2
+\]
+electrons with level $n$ is a proper fermionic atomic state. Every time we were we have to increase $n$, the energy per particle will make a jump.
+
+\begin{tabular}{ c|c|l }
+\hline
+n &\# &Predicted inert elements \\
+\hline
+1 &2 &2 (H$_{e}$) \\
+\hline
+2 &8 &10 (N$_{e}$) \\
+\hline
+3 &18 &28 (N$_i$) Not an element \\
+\hline
+4 &32 &60 (N$_d$) Not an element \\
+\hline
+\end{tabular}
+
+We correct the electron-electron repulsion in an average way. When electrons are close, the potential is given by:
+\[
+\frac{Ze^2}{2πϵ_0 r}
+\]
+When far away the potential is given by:
+\[
+\frac{e^2}{4πϵ_0 r}
+\]
+
+We can use the shell notation to write down how many electron states we have. 
+\[
+(1s)^2 (2s)^2 (2p)^{5}
+\]
+This shows that we have to electrons in the lowest shell, 2 in the next lowest and 5 in the third lowest. This does not tell us the $m$ values we have to use as we have not filled out the entire 2p shell. The amount of electrons in a shell is given by $2(2l+1)$. 
+
+
+\begin{tabular}{ c|c }
+Shell &$n+l$ \\
+\hline
+1s &1 \\
+\hline
+2s 2p &2 3 \\
+\hline
+3s 3p &3 4 \\
+\hline
+4s 3d 4p &4 5 5 \\
+\hline
+5s 4d 5p &5 6 6 \\
+\hline
+6s 4f 5d 6p &6 7 7 7 \\
+\hline
+7s 5f 6d 7p &7 8 8 8 \\
+\end{tabular}
+
+Energy increase from left to right with higher $n$. Alternative ways to specify the groundstate:
+\section*{Rotational Invariance}
+The groundstate can be specified by the quantum numbers for the total angular momentum $\hat{J}$, the total orbital angular momentum $\hat{L}$ and the total spin $\vec{S}$.
+\[
+\vec{S} = ∑_{i=1}^{N} \vec{s}_i \quad , \quad \vec{L} = ∑_{i=1}^{N} \vec{l}_i \quad , \quad \vec{J} = \vec{L} + \vec{S}
+\]
+A groundstate multiplet is denoted by:
+\[
+^{2S+1}L_J \quad , \quad L ∈ \underbrace{\left\{S,P,D,F,G,H, \ldots  \right\}}_{l = 0, 1, 2, 3, 4, 5, 5*}
+\]
+\subsection*{Example: He}
+He: (1s)$^2$, $n = 1, l = 0$. Two electrons with $n=1, l=0, s=1 /2$ 
+\[
+\text{total } S = \left\{0,1\right\} \quad , \quad \text{total } L = 0 \quad , \quad \text{total } J ∈ \left\{0,1\right\} 
+\]
+Only $S = L = J = 0$ is possible: $^{1}S_{0}$
+
+\subsection*{Example: C}
+C: $(1s)^2 (2s)^2 (2p)^2$. In general completely filled subshells have $L = S = 0$, so here we only consider the outer $2p$-subshell. There are 2 electrons in  this subshell with $n=2$ and $l=1$
+\[
+L ∈ \left\{0,1,2\right\} \quad , \quad S ∈ \left\{0,1\right\}
+\]
+We now consider the symmetries and look at the Clebsch-Gordan table. 
+The allowed values must be antisymmetric
+
+\begin{tabular}[t]{ c|c }
+L &Symmetry \\
+\hline
+0 &+ \\
+1 &- \\
+2 &+ \\
+\hline
+\end{tabular}\hspace{10pt}
+\begin{tabular}[t]{ c|c }
+S &Symmetries \\
+\hline
+0 &- \\
+1 &0 \\
+\hline
+\end{tabular}\hspace{10pt}
+\begin{tabular}[t]{ c|c|c }
+L,S &J & \\
+\hline
+0,0 &0 & $^1S_0$\\
+1,0 &1 & $^3P_0\ ^2P_1$\\
+1,1 &0,1,2 & $^1P_1\ ^3P_2\ ^3P_1\ ^3P_0\ ^1P_1$\\
+2,0 &2 & $^3D_2\ ^3D_1\ ^3D_0$\\
+\end{tabular}
+
+\subsection*{Hunds Rules}
+To find the lowest energy we use the following:
+\begin{enumerate}
+    \item Highest $S$ has the lowest energy  $ → ^3P_{0}\ ^3P_{1}\ ^3P_2$
+    \item Highest $L$ has the lowest energy $ → ^3P_0\ ^3P_1\ $
+    \item If the subshell has more than half filled, the 
+\end{enumerate}
+
+
+\end{document}
